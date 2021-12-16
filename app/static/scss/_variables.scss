@@ -1,0 +1,44 @@
+:root {
+	
+}
+
+
+$tr : all .33s ease;
+
+
+// CUSTOM SCROLL
+@mixin CustomScroll {
+	overflow-x: hidden;
+	overflow-y: scroll;
+	// scrollbar-color: #474C50 #091016;
+	scrollbar-color: red green;
+	scrollbar-width: thin;
+	border-color: transparent;
+	margin: 5px 0;
+	margin-top: 0;
+	// margin-right: 5px;
+	&::-webkit-scrollbar-track {
+		background: transparent;
+		transition: border-color .33s ease, opacity .5s ease-out;
+	}
+	&::-webkit-scrollbar {
+		width: 6px;
+		height: 0;
+		transition: border-color .33s ease, opacity .5s ease-out;
+		
+	}
+	&::-webkit-scrollbar-thumb {
+		border-radius: 30px;
+		border-right-style: inset;
+		border-right-width: 100vh;
+		border-color: inherit;
+		transition: border-color .45s ease;
+	}
+	&:hover {
+		border-color: rgba(0,0,0,.16);
+	}
+	> * {
+		margin-right: -5px
+	}
+}
+
