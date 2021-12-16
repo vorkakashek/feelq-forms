@@ -29,10 +29,10 @@ body {
 
 body,
 html {
-	color: #fff;
+	color: var(--color);
 	font-family: 'Jost', sans-serif;
-	letter-spacing: .03rem;
-	font-size: 14px;
+	letter-spacing: .02rem;
+	// font-size: 14px;
 	scrollbar-width: thin;
 	scroll-behavior: smooth;
 
@@ -41,10 +41,41 @@ html {
 	}
 
 	&::-webkit-scrollbar-track {
-		background-color: #8c8c8c;
+		background-color: #cfcfcf;
 	}
 
 	&::-webkit-scrollbar-thumb {
-		background-color: #f6f6f6;
+		background-color: #9d9d9d;
 	}
+}
+
+h1 {
+	color: var(--main);
+	text-transform: uppercase;
+	font-weight: 700;
+	letter-spacing: .4rem;
+	font-size: 48px;
+}
+
+h2 {
+	color: var(--title);
+	font-weight: 500;
+	font-size: 24px;
+	letter-spacing: 0.02rem;
+	color: var(--title);
+	margin-bottom: 1rem;
+}
+
+hr {
+	background: var(--border);
+	margin: 1rem 0;
+}
+
+main {
+	max-width: 650px;
+	padding-right: 10px;
+	padding-left: 10px;
+	margin: 0 auto;
+	width: 100%;
+	margin-top: -100px;
 }

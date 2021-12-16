@@ -1,0 +1,166 @@
+main
+	.panel.form-header
+		h2 Вас ожидает особенный подарок!
+		p Заполните анкету до конца, и Вы получите подарок на свою электронную почту.
+		hr
+		p.notice * Обязательно к заполнению
+
+	.panel.form-header
+		h2 Спасибо, что оставили свои контактные данные!
+		p Заполнение анкеты займет у вас не более 
+			strong 10 минут. 
+			| Я постаралась сделать вопросы интересными, чтобы вы прошли анкету с удовольствием. Пожалуйста, ответьте на все вопросы анкеты до конца, чтобы 
+			strong получить подарок!
+		hr
+		p.notice * Обязательно к заполнению
+
+		
+
+	form#form(action='')
+		//- Progress Bar
+		.progress
+			.progress-line
+				.progress-done
+			.progress-counter Страница 
+				span.current-page 1 
+				|  из 
+				span.total-pages 3 
+		//- Tabs
+
+		.tab
+			.panel
+				label.required
+					.label Ваше ФИО
+					input(type='text' placeholder='Иванов Иван Иванович' required)
+				label.required
+					.label Ваш номер телефона для связи
+					input(type='tel' placeholder='+7 (999) 999 99-99' required)
+				label.required
+					.label Ваша электронная почта, куда отправить подарок после заполнения анкеты
+					input(type='tel' placeholder='example@mail.com' required)
+
+				.radio-group
+					.label Ваш пол
+					.toggler
+						label
+							input(type='radio' name="")
+							span.radio-icon
+								img(src="./assets/svg/female.svg" alt="")
+						label
+							input(type='radio' name="")
+							span.radio-icon
+								img(src="./assets/svg/male.svg" alt="")
+
+
+				.radio-group.required
+					.label Ваш возраст
+					label
+						input(type='radio' name="")
+						span.radio
+						span.radio-label до 18 лет
+					label
+						input(type='radio' name="")
+						span.radio
+						span.radio-label 18 - 25
+					label
+						input(type='radio' name="")
+						span.radio
+						span.radio-label 25 - 31
+					label
+						input(type='radio' name="")
+						span.radio
+						span.radio-label 31 - 40
+					label
+						input(type='radio' name="")
+						span.radio
+						span.radio-label 40 +
+
+				.radio-group.required
+					.label Ваш возраст
+					label
+						input(type='radio' name="")
+						span.radio
+						span.radio-label до 18 лет
+					label
+						input(type='radio' name="")
+						span.radio
+						span.radio-label 18 - 25
+					label.other-option
+						input(type='radio' name="")
+						span.radio
+						span.radio-label Другое
+						input(type='text' placeholder='Свой вариант ответа')
+
+				.checkbox-group
+					.label Поделитесь, что для вас является самым важным в жизни. Можно выбрать несколько вариантов:
+					label
+						input(type='checkbox' name="")
+						span.checkbox
+						span.checkbox-label Семья и друзья
+					label
+						input(type='checkbox' name="")
+						span.checkbox
+						span.checkbox-label Карьера
+					label
+						input(type='checkbox' name="")
+						span.checkbox
+						span.checkbox-label Финансовая стабильность и рост
+					label
+						input(type='checkbox' name="")
+						span.checkbox
+						span.checkbox-label Отношения с противоположным полом
+					label
+						input(type='checkbox' name="")
+						span.checkbox
+						span.checkbox-label Отношения с собой и духовный рост
+					label
+						input(type='checkbox' name="")
+						span.checkbox
+						span.checkbox-label Свобода и возможность путешествовать
+					label.other-option
+						input(type='checkbox' name="")
+						span.checkbox
+						span.checkbox-label Другое
+						input(type='text' placeholder='Свой вариант ответа')
+				
+				label
+					.label Поделитесь о своем опыте. Какие курсы/тренинги по теме решения вашей проблемы вы проходили? Что понравилось, а что нет? (ОТКРЫТЫЙ ВОПРОС)
+					.textarea
+						strong Ответ: 
+						textarea(type='text' placeholder='Ваш ответ')
+
+
+
+		.tab
+			.panel
+				label
+					.label Ваше ФИО
+					input(type='text' placeholder='Иванов Иван Иванович')
+				label
+					.label Ваш номер телефона для связи
+					input(type='tel' placeholder='+7 (999) 999 99-99')
+				label
+					.label Ваша электронная почта, куда отправить подарок после заполнения анкеты
+					input(type='tel' placeholder='example@mail.com')
+
+		.tab
+			.panel
+				label
+					.label Ваше ФИО
+					input(type='text' placeholder='Иванов Иван Иванович')
+				label
+					.label Ваш номер телефона для связи
+					input(type='tel' placeholder='+7 (999) 999 99-99')
+				label
+					.label Ваша электронная почта, куда отправить подарок после заполнения анкеты
+					input(type='tel' placeholder='example@mail.com')
+
+		.panel-footer
+			button.button#prevBtn(type='button' onclick='nextPrev(-1)') Назад
+			button.button#nextBtn(type='button' onclick='nextPrev(1)') Дальше
+
+		//- div(style='text-align:center;margin-top:40px;')
+		//- 	span.step
+		//- 	span.step
+		//- 	span.step
+		//- 	span.step
