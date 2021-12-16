@@ -7,21 +7,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
 var currentTab = 0; // Current tab is set to be the first tab (0)
 showTab(currentTab); // Display the current tab
-initRadio();
-initCheckbox();
-initQuestions();
+initRadio(); // автоматом заполняем name всем группам радио боксов
+initCheckbox(); // автоматом заполняем name всем группам чекбоксов
 
-
-// init number of all Questions
-function initQuestions() {
-	const questions = document.querySelectorAll('form .label');
-}
 
 // init all .radio-groups
 function initRadio() {
 	const radioGr = document.querySelectorAll('.radio-group');
 	if (radioGr !== null) {
-		// console.log(radioGr.length)
 		for (const element of radioGr) {
 			const index = [...radioGr].indexOf(element);
 			[...element.querySelectorAll('input[type="radio"]')].map(e => e.setAttribute('name', 'radio-group-' + index));
@@ -33,7 +26,6 @@ function initRadio() {
 function initCheckbox() {
 	const checkboxGr = document.querySelectorAll('.checkbox-group');
 	if (checkboxGr !== null) {
-		// console.log(checkboxGr.length)
 		for (const element of checkboxGr) {
 			const index = [...checkboxGr].indexOf(element);
 			[...element.querySelectorAll('input[type="checkbox"]')].map(e => e.setAttribute('name', 'checkbox-group-' + index));
@@ -112,61 +104,7 @@ function nextPrev(n) {
 
 // Валидация
 function validateForm() {
-	// This function deals with validation of the form fields
-	// var x, y, i, valid = true;
 	var valid = true;
-	// x = document.getElementsByClassName("tab");
-	// y = x[currentTab].querySelectorAll("input[required]");
-
-
-	// A loop that checks every input field in the current tab:
-	// for (i = 0; i < y.length; i++) {
-	// 	// If a field is empty...
-	// 	if (y[i].value == "") {
-	// 		// add an "invalid" class to the field:
-	// 		y[i].className += " invalid";
-	// 		// and set the current valid status to false:
-	// 		valid = false;
-	// 	}
-	// }
-
-	// 
-	// const radioRequired = x[currentTab].querySelectorAll('.radio-group.required');
-
-	// for (i = 0; i < radioRequired.length; i++) {
-	// 	if (radioRequired[i].querySelector("input:checked") == null) {
-	// 		radioRequired[i].classList.add('invalid');
-	// 		valid = false;
-	// 	} else {
-	// 		valid = true;
-	// 		radioRequired[i].classList.remove('invalid');
-	// 	}
-	// }
-
-	// // 
-	// const checkboxRequired = x[currentTab].querySelectorAll('.checkbox-group.required');
-
-	// for (i = 0; i < checkboxRequired.length; i++) {
-	// 	if (checkboxRequired[i].querySelector("input:checked") == null) {
-	// 		checkboxRequired[i].classList.add('invalid');
-	// 		valid = false;
-	// 	} else {
-	// 		valid = true;
-	// 		checkboxRequired[i].classList.remove('invalid');
-	// 	}
-	// }
-
-
-	// If the valid status is true, mark the step as finished and valid:
-	// if (valid) {
-
-	// }
+	
 	return valid; // return the valid status
 }
-
-// document.addEventListener('input', e => {
-// 	if (e.target.matches('input')) {
-// 		e.target.classList.remove('invalid')
-// 		// e.target.closest('.required').classList.remove('invalid');
-// 	}
-// });
