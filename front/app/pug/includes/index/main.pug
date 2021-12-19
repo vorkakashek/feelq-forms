@@ -14,6 +14,16 @@ main
 		hr
 		p.notice * Обязательно к заполнению
 
+	.panel.form-header
+		h2 В этом блоке анкеты я хочу узнать о вас чуть больше
+		hr
+		p.notice * Обязательно к заполнению
+
+	.panel.form-header
+		h2 Здесь будет всего 5 вопросов, но я попрошу вас ответить на них подробно
+		hr
+		p.notice * Обязательно к заполнению
+
 		
 
 	form#form(action='')
@@ -26,141 +36,265 @@ main
 				|  из 
 				span.total-pages 3 
 		//- Tabs
+		//- Tab Group #1
+		.tab-group.active
+			.tab
+				.panel
+					label.required
+						.label Ваше ФИО
+						input(type='text' placeholder='Иванов Иван Иванович' required)
+					label.required
+						.label Ваш номер телефона для связи
+						input(type='tel' placeholder='+7 (999) 999 99-99' required)
+					label.required
+						.label Ваша электронная почта, куда отправить подарок после заполнения анкеты
+						input(type='tel' placeholder='example@mail.com' required)
 
-		.tab
-			.panel
-				label.required
-					.label Ваше ФИО
-					input(type='text' placeholder='Иванов Иван Иванович' required)
-				label.required
-					.label Ваш номер телефона для связи
-					input(type='tel' placeholder='+7 (999) 999 99-99' required)
-				label.required
-					.label Ваша электронная почта, куда отправить подарок после заполнения анкеты
-					input(type='tel' placeholder='example@mail.com' required)
+					.radio-group
+						.label Ваш пол
+						.toggler
+							label
+								input(type='radio' name="")
+								span.radio-icon
+									img(src="./assets/svg/female.svg" alt="")
+							label
+								input(type='radio' name="")
+								span.radio-icon
+									img(src="./assets/svg/male.svg" alt="")
 
-				.radio-group
-					.label Ваш пол
-					.toggler
+
+					.radio-group.required
+						.label Ваш возраст
 						label
 							input(type='radio' name="")
-							span.radio-icon
-								img(src="./assets/svg/female.svg" alt="")
+							span.radio
+							span.radio-label до 18 лет
 						label
 							input(type='radio' name="")
-							span.radio-icon
-								img(src="./assets/svg/male.svg" alt="")
+							span.radio
+							span.radio-label 18 - 25
+						label
+							input(type='radio' name="")
+							span.radio
+							span.radio-label 25 - 31
+						label
+							input(type='radio' name="")
+							span.radio
+							span.radio-label 31 - 40
+						label
+							input(type='radio' name="")
+							span.radio
+							span.radio-label 40 +
+
+					.radio-group.required
+						.label Ваш возраст
+						label
+							input(type='radio' name="")
+							span.radio
+							span.radio-label до 18 лет
+						label
+							input(type='radio' name="")
+							span.radio
+							span.radio-label 18 - 25
+						label.other-option
+							input(type='radio' name="")
+							span.radio
+							span.radio-label Другое
+							input(type='text' placeholder='Свой вариант ответа')
+
+					.checkbox-group
+						.label Поделитесь, что для вас является самым важным в жизни. Можно выбрать несколько вариантов:
+						label
+							input(type='checkbox' name="")
+							span.checkbox
+							span.checkbox-label Семья и друзья
+						label
+							input(type='checkbox' name="")
+							span.checkbox
+							span.checkbox-label Карьера
+						label
+							input(type='checkbox' name="")
+							span.checkbox
+							span.checkbox-label Финансовая стабильность и рост
+						label
+							input(type='checkbox' name="")
+							span.checkbox
+							span.checkbox-label Отношения с противоположным полом
+						label
+							input(type='checkbox' name="")
+							span.checkbox
+							span.checkbox-label Отношения с собой и духовный рост
+						label
+							input(type='checkbox' name="")
+							span.checkbox
+							span.checkbox-label Свобода и возможность путешествовать
+						label.other-option
+							input(type='checkbox' name="")
+							span.checkbox
+							span.checkbox-label Другое
+							input(type='text' placeholder='Свой вариант ответа')
+
+					label
+						.label Поделитесь о своем опыте. Какие курсы/тренинги по теме решения вашей проблемы вы проходили? Что понравилось, а что нет? (ОТКРЫТЫЙ ВОПРОС)
+						.textarea
+							strong Ответ: 
+							textarea(type='text' placeholder='Ваш ответ')
 
 
-				.radio-group.required
-					.label Ваш возраст
-					label
-						input(type='radio' name="")
-						span.radio
-						span.radio-label до 18 лет
-					label
-						input(type='radio' name="")
-						span.radio
-						span.radio-label 18 - 25
-					label
-						input(type='radio' name="")
-						span.radio
-						span.radio-label 25 - 31
-					label
-						input(type='radio' name="")
-						span.radio
-						span.radio-label 31 - 40
-					label
-						input(type='radio' name="")
-						span.radio
-						span.radio-label 40 +
 
-				.radio-group.required
-					.label Ваш возраст
+			.tab
+				.panel
 					label
-						input(type='radio' name="")
-						span.radio
-						span.radio-label до 18 лет
+						.label Ваше ФИО
+						input(type='text' placeholder='Иванов Иван Иванович')
 					label
-						input(type='radio' name="")
-						span.radio
-						span.radio-label 18 - 25
-					label.other-option
-						input(type='radio' name="")
-						span.radio
-						span.radio-label Другое
-						input(type='text' placeholder='Свой вариант ответа')
+						.label Ваш номер телефона для связи
+						input(type='tel' placeholder='+7 (999) 999 99-99')
+					label
+						.label Ваша электронная почта, куда отправить подарок после заполнения анкеты
+						input(type='tel' placeholder='example@mail.com')
 
-				.checkbox-group
-					.label Поделитесь, что для вас является самым важным в жизни. Можно выбрать несколько вариантов:
+			.tab
+				.panel
 					label
-						input(type='checkbox' name="")
-						span.checkbox
-						span.checkbox-label Семья и друзья
+						.label Ваше ФИО 2
+						input(type='text' placeholder='Иванов Иван Иванович')
 					label
-						input(type='checkbox' name="")
-						span.checkbox
-						span.checkbox-label Карьера
+						.label Ваш номер телефона для связи 2
+						input(type='tel' placeholder='+7 (999) 999 99-99')
 					label
-						input(type='checkbox' name="")
-						span.checkbox
-						span.checkbox-label Финансовая стабильность и рост
+						.label Ваша электронная почта, куда отправить подарок после заполнения анкеты 2
+						input(type='tel' placeholder='example@mail.com')
+
+		//- Tab Group #2 - thanks
+		.tab-group.thanks
+			.tab
+				.panel.green
+					p Интересный факт: Зарплата послов доброй воли ООН признана самой крохотной в мире. Эти люди зарабатывают по 1 доллару... в год!
+				.message
+					h2 Спасибо за то, что заполнили первую часть нашей Анкеты!
+					img(src="./assets/images/photo-1.jpg", alt="" loading="lazy")
+					a.button.button-green(href="#" onclick='nextPrev(1)') Продолжить
+		//- Tab Group #3
+		.tab-group
+			.tab
+				.panel
+					label.required
+						.label Ваше ФИО
+						input(type='text' placeholder='Иванов Иван Иванович' required)
+					label.required
+						.label Ваш номер телефона для связи
+						input(type='tel' placeholder='+7 (999) 999 99-99' required)
+					label.required
+						.label Ваша электронная почта, куда отправить подарок после заполнения анкеты
+						input(type='tel' placeholder='example@mail.com' required)
+
+					.radio-group
+						.label Ваш пол
+						.toggler
+							label
+								input(type='radio' name="")
+								span.radio-icon
+									img(src="./assets/svg/female.svg" alt="")
+							label
+								input(type='radio' name="")
+								span.radio-icon
+									img(src="./assets/svg/male.svg" alt="")
+			.tab
+				.panel
 					label
-						input(type='checkbox' name="")
-						span.checkbox
-						span.checkbox-label Отношения с противоположным полом
+						.label Ваше ФИО
+						input(type='text' placeholder='Иванов Иван Иванович')
 					label
-						input(type='checkbox' name="")
-						span.checkbox
-						span.checkbox-label Отношения с собой и духовный рост
+						.label Ваш номер телефона для связи
+						input(type='tel' placeholder='+7 (999) 999 99-99')
 					label
-						input(type='checkbox' name="")
-						span.checkbox
-						span.checkbox-label Свобода и возможность путешествовать
-					label.other-option
-						input(type='checkbox' name="")
-						span.checkbox
-						span.checkbox-label Другое
-						input(type='text' placeholder='Свой вариант ответа')
+						.label Ваша электронная почта, куда отправить подарок после заполнения анкеты
+						input(type='tel' placeholder='example@mail.com')
+
+			.tab
+				.panel
+					label
+						.label Ваше ФИО
+						input(type='text' placeholder='Иванов Иван Иванович')
+					label
+						.label Ваш номер телефона для связи
+						input(type='tel' placeholder='+7 (999) 999 99-99')
+					label
+						.label Ваша электронная почта, куда отправить подарок после заполнения анкеты
+						input(type='tel' placeholder='example@mail.com')
+
+		//- Tab Group #4 - thanks
+		.tab-group.thanks
+			.tab
+				.panel.green
+					p Интересный факт: Знали ли вы, что одним из главных инструментов счастливой женщины является сон? Только хорошо отдохнувшая женщина может чувствовать себя счастливой. Поэтому стоит чаще уделять время отдыху и внести его в свое расписание;) 
 				
-				label
-					.label Поделитесь о своем опыте. Какие курсы/тренинги по теме решения вашей проблемы вы проходили? Что понравилось, а что нет? (ОТКРЫТЫЙ ВОПРОС)
-					.textarea
-						strong Ответ: 
-						textarea(type='text' placeholder='Ваш ответ')
+				.message
+					h2 Финальный этап
+					img(src="./assets/images/photo-2.jpg", alt="" loading="lazy")
+					a.button.button-green(href="#" onclick='nextPrev(1)') Продолжить
 
+		//- Tab Group #5
+		.tab-group
+			.tab
+				.panel
+					label.required
+						.label Ваше ФИО группа 5!
+						input(type='text' placeholder='Иванов Иван Иванович' required)
+					label.required
+						.label Ваш номер телефона для связи  группа 5!
+						input(type='tel' placeholder='+7 (999) 999 99-99' required)
+					label.required
+						.label Ваша электронная почта, куда отправить подарок после заполнения анкеты
+						input(type='tel' placeholder='example@mail.com' required)
 
+					.radio-group
+						.label Ваш пол
+						.toggler
+							label
+								input(type='radio' name="")
+								span.radio-icon
+									img(src="./assets/svg/female.svg" alt="")
+							label
+								input(type='radio' name="")
+								span.radio-icon
+									img(src="./assets/svg/male.svg" alt="")
+			.tab
+				.panel
+					label
+						.label Ваше ФИО
+						input(type='text' placeholder='Иванов Иван Иванович')
+					label
+						.label Ваш номер телефона для связи
+						input(type='tel' placeholder='+7 (999) 999 99-99')
+					label
+						.label Ваша электронная почта, куда отправить подарок после заполнения анкеты
+						input(type='tel' placeholder='example@mail.com')
 
-		.tab
-			.panel
-				label
-					.label Ваше ФИО
-					input(type='text' placeholder='Иванов Иван Иванович')
-				label
-					.label Ваш номер телефона для связи
-					input(type='tel' placeholder='+7 (999) 999 99-99')
-				label
-					.label Ваша электронная почта, куда отправить подарок после заполнения анкеты
-					input(type='tel' placeholder='example@mail.com')
+			.tab
+				.panel
+					label
+						.label Ваше ФИО
+						input(type='text' placeholder='Иванов Иван Иванович')
+					label
+						.label Ваш номер телефона для связи
+						input(type='tel' placeholder='+7 (999) 999 99-99')
+					label
+						.label Ваша электронная почта, куда отправить подарок после заполнения анкеты
+						input(type='tel' placeholder='example@mail.com')
 
-		.tab
-			.panel
-				label
-					.label Ваше ФИО
-					input(type='text' placeholder='Иванов Иван Иванович')
-				label
-					.label Ваш номер телефона для связи
-					input(type='tel' placeholder='+7 (999) 999 99-99')
-				label
-					.label Ваша электронная почта, куда отправить подарок после заполнения анкеты
-					input(type='tel' placeholder='example@mail.com')
+		//- Tab Group #6 - thanks
+		.tab-group.thanks
+			.tab
+				.panel.green
+					p Если женщина счастлива, то счастливы все. Моя миссия - делать женщин счастливыми. И я рада, что вы мне сегодня в этом помогли.
+				
+				.message
+					h2 Спасибо большое за заполнение анкеты! Она поможет мне давать вам самый интересный контент и творить лучшее для вас. 
+					img(src="./assets/images/photo-3.jpg", alt="" loading="lazy")
+					a.button.button-green(href="/") Спасибо!
 
 		.panel-footer
 			button.button#prevBtn(type='button' onclick='nextPrev(-1)') Назад
 			button.button#nextBtn(type='button' onclick='nextPrev(1)') Дальше
-
-		//- div(style='text-align:center;margin-top:40px;')
-		//- 	span.step
-		//- 	span.step
-		//- 	span.step
-		//- 	span.step

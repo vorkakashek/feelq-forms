@@ -6,6 +6,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 var currentTab = 0; // Current tab is set to be the first tab (0)
+var currentTabGroup = 0;
+var currentHeader = 0;
+
 showTab(currentTab); // Display the current tab
 initRadio(); // автоматом заполняем name всем группам радио боксов
 initCheckbox(); // автоматом заполняем name всем группам чекбоксов
@@ -35,13 +38,27 @@ function initCheckbox() {
 
 
 // show .form-header 
-function showHeader(n) {
+function showHeader() {
 	const headers = document.querySelectorAll('.form-header');
 
-	if (currentTab < headers.length) {
+
+	if (document.querySelectorAll('.tab-group')[currentTabGroup].matches('.thanks')) {
 		[...headers].map(e => e.classList.remove('show'));
-		headers[currentTab].classList.add('show'); //
+	} else {
+		[...headers].map(e => e.classList.remove('show'));
+		if (currentTabGroup == 0) {
+			if (currentTab == 0) {
+				headers[0].classList.add('show');
+				currentHeader = 1;
+			} else {
+				headers[currentHeader].classList.add('show');
+			}
+		} else {
+			headers[currentHeader].classList.add('show');
+		}
 	}
+
+
 }
 
 // progress line
@@ -61,7 +78,7 @@ function progress() {
 function showTab(n) {
 	console.log("Текущая стр: " + (currentTab + 1));
 	progress();
-	showHeader(n);
+	showHeader();
 	if (document.querySelector(".tab") !== null) {
 		// This function will display the specified tab of the form ...
 		var x = document.querySelectorAll(".tab");
@@ -81,8 +98,11 @@ function showTab(n) {
 
 }
 
+var tabsCounter = document.querySelectorAll('.tab-group')[currentTabGroup].querySelectorAll('.tab').length;
+
+
 function nextPrev(n) {
-	// This function will figure out which tab to display
+	// This function will figure out which tab to display	
 	var x = document.getElementsByClassName("tab");
 	// Exit the function if any field in the current tab is invalid:
 
@@ -91,20 +111,79 @@ function nextPrev(n) {
 	x[currentTab].classList.remove('active');
 	// Increase or decrease the current tab by 1:
 	currentTab = currentTab + n;
+
+	if (n > 0) {
+		tabsCounter -= 1;
+		console.log('Вперед!')
+		if (tabsCounter <= 0) {
+			nextGroup();
+		}
+		if (tabsCounter == document.querySelectorAll('.tab-group')[currentTabGroup].querySelectorAll('.tab').length) {
+			document.querySelector('#prevBtn').classList.add('hide');
+		} else {
+			document.querySelector('#prevBtn').classList.remove('hide');
+		}
+	}
+
+	if (n < 0) {
+		tabsCounter += 1;
+		if (tabsCounter == document.querySelectorAll('.tab-group')[currentTabGroup].querySelectorAll('.tab').length) {
+			document.querySelector('#prevBtn').classList.add('hide');
+		} else {
+			document.querySelector('#prevBtn').classList.remove('hide');
+		}
+		console.log('Назад!')
+	}
+
+
 	// if you have reached the end of the form... :
 	if (currentTab >= x.length) {
-		//...the form gets submitted:
-		// document.getElementById("form").submit();
 		return false;
 	}
 	// Otherwise, display the correct tab:
 	showTab(currentTab);
+
 }
 
+function nextGroup() {
+	currentTabGroup += 1;
+	
+	if (!(document.querySelectorAll('.tab-group')[currentTabGroup].matches('.thanks'))) {
+		currentHeader += 1;
+	}
+	// обнуляем счетчик табов в текущем tab group
+	tabsCounter = document.querySelectorAll('.tab-group')[currentTabGroup].querySelectorAll('.tab').length;
+	document.querySelector('#prevBtn').classList.add('hide');
+
+	[...document.querySelectorAll('.tab-group')].map(e => e.classList.remove('active'));
+	document.querySelectorAll('.tab-group')[currentTabGroup].classList.add('active');
+
+	if (document.querySelectorAll('.tab-group')[currentTabGroup].matches('.thanks')) {
+		hideFormUI();
+	} else {
+		showFormUI();
+	}
+}
+
+function hideFormUI() {
+	const headers = document.querySelectorAll('.form-header');
+
+	document.querySelector('.panel-footer').classList.add('hide');
+	document.querySelector('.progress').classList.add('hide');
+	[...headers].map(e => e.classList.remove('show'));
+}
+
+function showFormUI() {
+	const headers = document.querySelectorAll('.form-header');
+
+	document.querySelector('.panel-footer').classList.remove('hide');
+	document.querySelector('.progress').classList.remove('hide');
+	headers[0].classList.add('show');
+}
 
 // Валидация
 function validateForm() {
 	var valid = true;
-	
+
 	return valid; // return the valid status
 }

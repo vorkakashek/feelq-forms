@@ -200,6 +200,7 @@ textarea::placeholder {
   display: -ms-inline-flexbox;
   display: inline-flex;
   transition: all 0.33s ease;
+  cursor: pointer;
 }
 .button#nextBtn, .button.button-green {
   background-color: var(--main);
@@ -218,6 +219,17 @@ textarea::placeholder {
 }
 .button#prevBtn:hover {
   opacity: 0.5;
+}
+
+.tab-group {
+  display: none;
+}
+.tab-group.active {
+  display: block;
+}
+
+.hide {
+  display: none !important;
 }
 
 .progress {

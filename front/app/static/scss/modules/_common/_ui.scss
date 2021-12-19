@@ -137,6 +137,7 @@ textarea {
 	text-decoration: none;
 	display: inline-flex;
 	transition: $tr;
+	cursor: pointer;
 
 	&#nextBtn,
 	&.button-green {
@@ -165,6 +166,17 @@ textarea {
 		// 	background-color: #669a3f;
 		// }
 	}
+}
+
+.tab-group {
+	display: none;
+	&.active {
+		display: block;
+	}
+}
+
+.hide {
+	display: none !important;
 }
 
 
