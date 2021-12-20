@@ -56,8 +56,6 @@ p {
 
 .required {
 	&.invalid {
-		background-color: #ffdddd;
-
 		.label {
 			color: var(--error);
 		}
@@ -65,8 +63,35 @@ p {
 		input,
 		textarea {
 			background-color: #ffdddd;
+
+			&::placeholder {
+				color: var(--error);
+			}
 		}
-		
+
+		.textarea-style {
+			strong {
+				color: var(--error);
+			}
+		}
+
+		label {
+			span.radio {
+				border-color: var(--error);
+			}
+
+			span.radio-label {
+				color: var(--error);
+			}
+
+			span.checkbox {
+				border-color: var(--error);
+			}
+
+			span.checkbox-label {
+				color: var(--error);
+			}
+		}
 	}
 
 	.label {

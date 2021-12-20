@@ -102,15 +102,43 @@ p strong {
   font-size: 14px;
 }
 
-.required.invalid {
-  background-color: #ffdddd;
-}
 .required.invalid .label {
   color: var(--error);
 }
 .required.invalid input,
 .required.invalid textarea {
   background-color: #ffdddd;
+}
+.required.invalid input::-webkit-input-placeholder, .required.invalid textarea::-webkit-input-placeholder {
+  color: var(--error);
+}
+.required.invalid input::-moz-placeholder, .required.invalid textarea::-moz-placeholder {
+  color: var(--error);
+}
+.required.invalid input:-ms-input-placeholder, .required.invalid textarea:-ms-input-placeholder {
+  color: var(--error);
+}
+.required.invalid input::-ms-input-placeholder, .required.invalid textarea::-ms-input-placeholder {
+  color: var(--error);
+}
+.required.invalid input::placeholder,
+.required.invalid textarea::placeholder {
+  color: var(--error);
+}
+.required.invalid .textarea-style strong {
+  color: var(--error);
+}
+.required.invalid label span.radio {
+  border-color: var(--error);
+}
+.required.invalid label span.radio-label {
+  color: var(--error);
+}
+.required.invalid label span.checkbox {
+  border-color: var(--error);
+}
+.required.invalid label span.checkbox-label {
+  color: var(--error);
 }
 .required .label:after {
   content: " *";
