@@ -5,12 +5,8 @@ document.addEventListener('DOMContentLoaded', function () {
 	console.log('ready!')
 }, false);
 
-var element = document.getElementById('selector');
-var maskOptions = {
-	mask: '+{7}(000)000-00-00'
-};
-var mask = IMask(element, maskOptions);
-
+Inputmask('phone').mask('input[name="phone"]');
+Inputmask('email').mask('input[name="email"]');
 
 var currentTab = 0; // Current tab is set to be the first tab (0)
 var currentTabGroup = 0;
