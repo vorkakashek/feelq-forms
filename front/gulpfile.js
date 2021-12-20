@@ -41,6 +41,10 @@ function libs() {
 		.pipe(dest('build/libs/'));
 };
 
+// function JSlibs() {
+
+// }
+
 function buildStyles() {
 	return src('app/static/scss/**/main.scss')
 		.pipe(scss.sync({
@@ -55,10 +59,11 @@ function buildStyles() {
 };
 
 function buildJs() {
-	return src('app/static/js/*.js')
+	return src(['app/static/js/libs/**/*.js', 'app/static/js/*.js'])
 		.pipe(babel({
 			presets: ['@babel/env']
 		}))
+		.pipe(concat('app.js'))
 		.pipe(sourcemaps.init())
 		.pipe(sourcemaps.write('.'))
 		.pipe(minify())
