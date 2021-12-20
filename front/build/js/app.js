@@ -4,13 +4,11 @@ function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableTo
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
 function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
 
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
-
-function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
@@ -20,96 +18,37 @@ document.addEventListener('DOMContentLoaded', function () {
 var currentTab = 0; // Current tab is set to be the first tab (0)
 
 var currentTabGroup = 0;
-var currentHeader = 0;
+var currentTabGroupThanks = 0;
+var currentTabIndex = 0;
+var tabsCounter = document.querySelectorAll('.tab-group')[currentTabGroup].querySelectorAll('.tab').length;
 showTab(currentTab); // Display the current tab
-
-initRadio(); // автоматом заполняем name всем группам радио боксов
-
-initCheckbox(); // автоматом заполняем name всем группам чекбоксов
-// init all .radio-groups
-
-function initRadio() {
-  var radioGr = document.querySelectorAll('.radio-group');
-
-  if (radioGr !== null) {
-    var _iterator = _createForOfIteratorHelper(radioGr),
-        _step;
-
-    try {
-      var _loop = function _loop() {
-        var element = _step.value;
-
-        var index = _toConsumableArray(radioGr).indexOf(element);
-
-        _toConsumableArray(element.querySelectorAll('input[type="radio"]')).map(function (e) {
-          return e.setAttribute('name', 'radio-group-' + index);
-        });
-      };
-
-      for (_iterator.s(); !(_step = _iterator.n()).done;) {
-        _loop();
-      }
-    } catch (err) {
-      _iterator.e(err);
-    } finally {
-      _iterator.f();
-    }
-  }
-} // init all .checkbox-groups
-
-
-function initCheckbox() {
-  var checkboxGr = document.querySelectorAll('.checkbox-group');
-
-  if (checkboxGr !== null) {
-    var _iterator2 = _createForOfIteratorHelper(checkboxGr),
-        _step2;
-
-    try {
-      var _loop2 = function _loop2() {
-        var element = _step2.value;
-
-        var index = _toConsumableArray(checkboxGr).indexOf(element);
-
-        _toConsumableArray(element.querySelectorAll('input[type="checkbox"]')).map(function (e) {
-          return e.setAttribute('name', 'checkbox-group-' + index);
-        });
-      };
-
-      for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
-        _loop2();
-      }
-    } catch (err) {
-      _iterator2.e(err);
-    } finally {
-      _iterator2.f();
-    }
-  }
-} // show .form-header 
-
+// show .form-header 
 
 function showHeader() {
   var headers = document.querySelectorAll('.form-header');
 
-  if (document.querySelectorAll('.tab-group')[currentTabGroup].matches('.thanks')) {
-    _toConsumableArray(headers).map(function (e) {
-      return e.classList.remove('show');
-    });
-  } else {
+  if (document.querySelectorAll('.tab')[currentTab].matches('.thanks')) {
+    currentTabGroupThanks++;
+
     _toConsumableArray(headers).map(function (e) {
       return e.classList.remove('show');
     });
 
-    if (currentTabGroup == 0) {
-      if (currentTab == 0) {
-        headers[0].classList.add('show');
-        currentHeader = 1;
-      } else {
-        headers[currentHeader].classList.add('show');
-      }
+    return;
+  }
+
+  _toConsumableArray(headers).map(function (e) {
+    return e.classList.remove('show');
+  });
+
+  if (currentTabGroup === 0) {
+    if (currentTab === 0) {
+      headers[0].classList.add('show');
     } else {
-      headers[currentHeader].classList.add('show');
+      headers[currentTab - currentTabGroupThanks].classList.add('show');
     }
+  } else {
+    headers[currentTab - currentTabGroupThanks].classList.add('show');
   }
 } // progress line
 
@@ -119,12 +58,13 @@ function progress() {
 
   if (progress !== null) {
     // Progress Line
-    var currentProgress = 100 / document.querySelectorAll(".tab").length * (currentTab + 1);
+    var currentTabNumber = currentTab - currentTabGroupThanks + 1;
+    var currentProgress = 100 / document.querySelectorAll(".tab:not(.thanks)").length * currentTabNumber;
     progress.querySelector('.progress-done').style.width = currentProgress + "%"; // Counter
 
-    progress.querySelector('.total-pages').textContent = document.querySelectorAll(".tab").length; // total pages
+    progress.querySelector('.total-pages').textContent = document.querySelectorAll(".tab:not(.thanks)").length; // total pages
 
-    progress.querySelector('.current-page').textContent = currentTab + 1; // current page
+    progress.querySelector('.current-page').textContent = currentTabNumber; // current page
   }
 }
 
@@ -138,62 +78,49 @@ function showTab(n) {
     var x = document.querySelectorAll(".tab");
     x[n].classList.add('active'); // ... and fix the Previous/Next buttons:
 
-    if (n == 0) {
-      document.querySelector("#prevBtn").style.display = "none";
+    if (currentTab === 0) {
       document.querySelector('#nextBtn').textContent = "Начнем!";
+    }
+
+    if (tabsCounter === document.querySelectorAll('.tab-group')[currentTabGroup].querySelectorAll('.tab').length || document.querySelectorAll('.tab')[currentTab].matches('.thanks')) {
+      document.querySelector('#prevBtn').classList.add('hide');
+      document.querySelector('#prevBtn').classList.remove('show');
     } else {
-      document.querySelector("#prevBtn").style.display = "inline";
+      document.querySelector('#prevBtn').classList.add('show');
+      document.querySelector('#prevBtn').classList.remove('hide');
       document.querySelector('#nextBtn').textContent = "Дальше";
     }
 
-    if (n + 1 == x.length) {
+    if (n + 1 === x.length) {
       document.querySelector("#nextBtn").innerHTML = "Готово";
     }
   }
 }
 
-var tabsCounter = document.querySelectorAll('.tab-group')[currentTabGroup].querySelectorAll('.tab').length;
-
 function nextPrev(n) {
-  // This function will figure out which tab to display	
-  var x = document.getElementsByClassName("tab"); // Exit the function if any field in the current tab is invalid:
+  // This function will figure out which tab to display
+  var x = document.querySelectorAll(".tab"); // Exit the function if any field in the current tab is invalid:
 
-  if (n == 1 && !validateForm()) return false; // Hide the current tab:
+  if (n === 1 && !validateForm()) return false; // Hide the current tab:
 
   x[currentTab].classList.remove('active'); // Increase or decrease the current tab by 1:
 
-  currentTab = currentTab + n;
+  currentTab += n;
+  tabsCounter += n > 0 ? -1 : 1;
 
-  if (n > 0) {
-    tabsCounter -= 1;
-    console.log('Вперед!');
-
-    if (tabsCounter <= 0) {
-      nextGroup();
-    }
-
-    if (tabsCounter == document.querySelectorAll('.tab-group')[currentTabGroup].querySelectorAll('.tab').length) {
-      document.querySelector('#prevBtn').classList.add('hide');
-    } else {
-      document.querySelector('#prevBtn').classList.remove('hide');
-    }
-  }
-
-  if (n < 0) {
-    tabsCounter += 1;
-
-    if (tabsCounter == document.querySelectorAll('.tab-group')[currentTabGroup].querySelectorAll('.tab').length) {
-      document.querySelector('#prevBtn').classList.add('hide');
-    } else {
-      document.querySelector('#prevBtn').classList.remove('hide');
-    }
-
-    console.log('Назад!');
+  if (tabsCounter <= 0) {
+    nextGroup();
   } // if you have reached the end of the form... :
 
 
   if (currentTab >= x.length) {
     return false;
+  }
+
+  if (document.querySelectorAll('.tab')[currentTab].matches('.thanks')) {
+    hideFormUI();
+  } else {
+    showFormUI();
   } // Otherwise, display the correct tab:
 
 
@@ -201,12 +128,7 @@ function nextPrev(n) {
 }
 
 function nextGroup() {
-  currentTabGroup += 1;
-
-  if (!document.querySelectorAll('.tab-group')[currentTabGroup].matches('.thanks')) {
-    currentHeader += 1;
-  } // обнуляем счетчик табов в текущем tab group
-
+  currentTabGroup++; // обнуляем счетчик табов в текущем tab group
 
   tabsCounter = document.querySelectorAll('.tab-group')[currentTabGroup].querySelectorAll('.tab').length;
   document.querySelector('#prevBtn').classList.add('hide');
@@ -216,12 +138,6 @@ function nextGroup() {
   });
 
   document.querySelectorAll('.tab-group')[currentTabGroup].classList.add('active');
-
-  if (document.querySelectorAll('.tab-group')[currentTabGroup].matches('.thanks')) {
-    hideFormUI();
-  } else {
-    showFormUI();
-  }
 }
 
 function hideFormUI() {

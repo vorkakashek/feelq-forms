@@ -4,7 +4,6 @@ main
 		p Заполните анкету до конца, и Вы получите подарок на свою электронную почту.
 		hr
 		p.notice * Обязательно к заполнению
-
 	.panel.form-header
 		h2 Спасибо, что оставили свои контактные данные!
 		p Заполнение анкеты займет у вас не более 
@@ -13,18 +12,50 @@ main
 			strong получить подарок!
 		hr
 		p.notice * Обязательно к заполнению
-
+	.panel.form-header
+		h2 Спасибо, что оставили свои контактные данные!
+		hr
+		p.notice * Обязательно к заполнению
+	.panel.form-header
+		h2 Спасибо, что оставили свои контактные данные!
+		hr
+		p.notice * Обязательно к заполнению
 	.panel.form-header
 		h2 В этом блоке анкеты я хочу узнать о вас чуть больше
 		hr
 		p.notice * Обязательно к заполнению
-
+	.panel.form-header
+		h2 В этом блоке анкеты я хочу узнать о вас чуть больше
+		hr
+		p.notice * Обязательно к заполнению
+	.panel.form-header
+		h2 В этом блоке анкеты я хочу узнать о вас чуть больше
+		hr
+		p.notice * Обязательно к заполнению
+	.panel.form-header
+		h2 В этом блоке анкеты я хочу узнать о вас чуть больше
+		hr
+		p.notice * Обязательно к заполнению
 	.panel.form-header
 		h2 Здесь будет всего 5 вопросов, но я попрошу вас ответить на них подробно
 		hr
 		p.notice * Обязательно к заполнению
-
-		
+	.panel.form-header
+		h2 Здесь будет всего 5 вопросов, но я попрошу вас ответить на них подробно
+		hr
+		p.notice * Обязательно к заполнению
+	.panel.form-header
+		h2 Здесь будет всего 5 вопросов, но я попрошу вас ответить на них подробно
+		hr
+		p.notice * Обязательно к заполнению
+	.panel.form-header
+		h2 Здесь будет всего 5 вопросов, но я попрошу вас ответить на них подробно
+		hr
+		p.notice * Обязательно к заполнению
+	.panel.form-header
+		h2 Здесь будет всего 5 вопросов, но я попрошу вас ответить на них подробно
+		hr
+		p.notice * Обязательно к заполнению
 
 	form#form(action='')
 		//- Progress Bar
@@ -32,9 +63,9 @@ main
 			.progress-line
 				.progress-done
 			.progress-counter Страница 
-				span.current-page 1 
+				span.current-page
 				|  из 
-				span.total-pages 3 
+				span.total-pages
 		//- Tabs
 		//- Tab Group #1
 		.tab-group.active
@@ -42,254 +73,473 @@ main
 				.panel
 					label.required
 						.label Ваше ФИО
-						input(type='text' placeholder='Иванов Иван Иванович' required)
+						input(type='text' name='name' placeholder='Иванов Иван Иванович' required)
 					label.required
 						.label Ваш номер телефона для связи
-						input(type='tel' placeholder='+7 (999) 999 99-99' required)
+						input(type='text' name='phone' placeholder='+7 (999) 999 99-99' required)
 					label.required
 						.label Ваша электронная почта, куда отправить подарок после заполнения анкеты
-						input(type='tel' placeholder='example@mail.com' required)
-
+						input(type='text' name='email' placeholder='example@mail.com' required)
+			.tab
+				.panel
 					.radio-group
 						.label Ваш пол
 						.toggler
 							label
-								input(type='radio' name="")
+								input(type='radio' name='gender' value='1')
 								span.radio-icon
 									img(src="./assets/svg/female.svg" alt="")
 							label
-								input(type='radio' name="")
+								input(type='radio' name='gender' value='2')
 								span.radio-icon
 									img(src="./assets/svg/male.svg" alt="")
-
-
 					.radio-group.required
 						.label Ваш возраст
 						label
-							input(type='radio' name="")
+							input(type='radio' name='age' value='1')
 							span.radio
 							span.radio-label до 18 лет
 						label
-							input(type='radio' name="")
+							input(type='radio' name='age' value='2')
 							span.radio
 							span.radio-label 18 - 25
 						label
-							input(type='radio' name="")
+							input(type='radio' name='age' value='3')
 							span.radio
 							span.radio-label 25 - 31
 						label
-							input(type='radio' name="")
+							input(type='radio' name='age' value='4')
 							span.radio
 							span.radio-label 31 - 40
 						label
-							input(type='radio' name="")
+							input(type='radio' name='age' value='5')
 							span.radio
 							span.radio-label 40 +
-
+			.tab
+				.panel
 					.radio-group.required
-						.label Ваш возраст
+						.label Ваш ежемесячный доход на данный момент
 						label
-							input(type='radio' name="")
+							input(type='radio' name='question_1')
 							span.radio
-							span.radio-label до 18 лет
+							span.radio-label Не зарабатываю
 						label
-							input(type='radio' name="")
+							input(type='radio' name='question_1')
 							span.radio
-							span.radio-label 18 - 25
+							span.radio-label до 30 000 руб
+						label
+							input(type='radio' name='question_1')
+							span.radio
+							span.radio-label 30 000 - 45 000 руб
+						label
+							input(type='radio' name='question_1')
+							span.radio
+							span.radio-label 45 000 - 65 000 руб
+						label
+							input(type='radio' name='question_1')
+							span.radio
+							span.radio-label 60 000 - 75 000 руб
+						label
+							input(type='radio' name='question_1')
+							span.radio
+							span.radio-label 75 000 - 100 000 руб
+						label
+							input(type='radio' name='question_1')
+							span.radio
+							span.radio-label 100 000 - 150 000 руб
+						label
+							input(type='radio' name='question_1')
+							span.radio
+							span.radio-label 150 000 - 300 000 руб
+						label
+							input(type='radio' name='question_1')
+							span.radio
+							span.radio-label более 300 000 руб
 						label.other-option
-							input(type='radio' name="")
+							input(type='radio' name='question_1')
 							span.radio
 							span.radio-label Другое
-							input(type='text' placeholder='Свой вариант ответа')
-
-					.checkbox-group
-						.label Поделитесь, что для вас является самым важным в жизни. Можно выбрать несколько вариантов:
+							input(type='text' name='question_1_other' placeholder='Свой вариант ответа')
+					.radio-group.required
+						.label Чем вы занимаетесь?
 						label
-							input(type='checkbox' name="")
-							span.checkbox
-							span.checkbox-label Семья и друзья
+							input(type='radio' name='question_2')
+							span.radio
+							span.radio-label Работаю в офисе
 						label
-							input(type='checkbox' name="")
-							span.checkbox
-							span.checkbox-label Карьера
+							input(type='radio' name='question_2')
+							span.radio
+							span.radio-label Владелец бизнеса
 						label
-							input(type='checkbox' name="")
-							span.checkbox
-							span.checkbox-label Финансовая стабильность и рост
+							input(type='radio' name='question_2')
+							span.radio
+							span.radio-label Работаю фриланс
 						label
-							input(type='checkbox' name="")
-							span.checkbox
-							span.checkbox-label Отношения с противоположным полом
+							input(type='radio' name='question_2')
+							span.radio
+							span.radio-label В декрете
 						label
-							input(type='checkbox' name="")
-							span.checkbox
-							span.checkbox-label Отношения с собой и духовный рост
-						label
-							input(type='checkbox' name="")
-							span.checkbox
-							span.checkbox-label Свобода и возможность путешествовать
+							input(type='radio' name='question_2')
+							span.radio
+							span.radio-label Не работаю
 						label.other-option
-							input(type='checkbox' name="")
-							span.checkbox
-							span.checkbox-label Другое
-							input(type='text' placeholder='Свой вариант ответа')
-
-					label
-						.label Поделитесь о своем опыте. Какие курсы/тренинги по теме решения вашей проблемы вы проходили? Что понравилось, а что нет? (ОТКРЫТЫЙ ВОПРОС)
-						.textarea
-							strong Ответ: 
-							textarea(type='text' placeholder='Ваш ответ')
-
-
-
+							input(type='radio' name='question_2')
+							span.radio
+							span.radio-label Другое
+							input(type='text' name='question_2_other' placeholder='Свой вариант ответа')
 			.tab
 				.panel
-					label
-						.label Ваше ФИО
-						input(type='text' placeholder='Иванов Иван Иванович')
-					label
-						.label Ваш номер телефона для связи
-						input(type='tel' placeholder='+7 (999) 999 99-99')
-					label
-						.label Ваша электронная почта, куда отправить подарок после заполнения анкеты
-						input(type='tel' placeholder='example@mail.com')
-
-			.tab
-				.panel
-					label
-						.label Ваше ФИО 2
-						input(type='text' placeholder='Иванов Иван Иванович')
-					label
-						.label Ваш номер телефона для связи 2
-						input(type='tel' placeholder='+7 (999) 999 99-99')
-					label
-						.label Ваша электронная почта, куда отправить подарок после заполнения анкеты 2
-						input(type='tel' placeholder='example@mail.com')
-
-		//- Tab Group #2 - thanks
-		.tab-group.thanks
-			.tab
+					.radio-group.required
+						.label В каком городе вы проживаете на данный момент?
+						label
+							input(type='radio' name='city')
+							span.radio
+							span.radio-label Москва
+						label
+							input(type='radio' name='city')
+							span.radio
+							span.radio-label Санкт-Петербург
+						label
+							input(type='radio' name='city')
+							span.radio
+							span.radio-label Новосибирск
+						label
+							input(type='radio' name='city')
+							span.radio
+							span.radio-label Екатеринбург
+						label
+							input(type='radio' name='city')
+							span.radio
+							span.radio-label Казань
+						label
+							input(type='radio' name='city')
+							span.radio
+							span.radio-label Нижний Новгород
+						label
+							input(type='radio' name='city')
+							span.radio
+							span.radio-label Челябинск
+						label
+							input(type='radio' name='city')
+							span.radio
+							span.radio-label Самара
+						label
+							input(type='radio' name='city')
+							span.radio
+							span.radio-label Красноярск
+						label
+							input(type='radio' name='city')
+							span.radio
+							span.radio-label Омск
+						label
+							input(type='radio' name='city')
+							span.radio
+							span.radio-label Ростов на Дону
+						label
+							input(type='radio' name='city')
+							span.radio
+							span.radio-label Уфа
+						label
+							input(type='radio' name='city')
+							span.radio
+							span.radio-label Воронеж
+						label
+							input(type='radio' name='city')
+							span.radio
+							span.radio-label Пермь
+						label
+							input(type='radio' name='city')
+							span.radio
+							span.radio-label Волгоград
+						label.other-option
+							input(type='radio' name='city')
+							span.radio
+							span.radio-label Другое
+							input(type='text' name='city_other' placeholder='Свой вариант ответа')
+			.tab.thanks
 				.panel.green
 					p Интересный факт: Зарплата послов доброй воли ООН признана самой крохотной в мире. Эти люди зарабатывают по 1 доллару... в год!
 				.message
 					h2 Спасибо за то, что заполнили первую часть нашей Анкеты!
 					img(src="./assets/images/photo-1.jpg", alt="" loading="lazy")
 					a.button.button-green(href="#" onclick='nextPrev(1)') Продолжить
-		//- Tab Group #3
+		//- Tab Group #2
 		.tab-group
 			.tab
 				.panel
-					label.required
-						.label Ваше ФИО
-						input(type='text' placeholder='Иванов Иван Иванович' required)
-					label.required
-						.label Ваш номер телефона для связи
-						input(type='tel' placeholder='+7 (999) 999 99-99' required)
-					label.required
-						.label Ваша электронная почта, куда отправить подарок после заполнения анкеты
-						input(type='tel' placeholder='example@mail.com' required)
-
+					.checkbox-group
+						.label Поделитесь, что для вас является самым важным в жизни. Можно выбрать несколько вариантов:
+						label
+							input(type='checkbox' name='question_3')
+							span.checkbox
+							span.checkbox-label Семья и друзья
+						label
+							input(type='checkbox' name='question_3')
+							span.checkbox
+							span.checkbox-label Карьера
+						label
+							input(type='checkbox' name='question_3')
+							span.checkbox
+							span.checkbox-label Финансовая стабильность и рост
+						label
+							input(type='checkbox' name='question_3')
+							span.checkbox
+							span.checkbox-label Отношения с противоположным полом
+						label
+							input(type='checkbox' name='question_3')
+							span.checkbox
+							span.checkbox-label Отношения с собой и духовный рост
+						label
+							input(type='checkbox' name='question_3')
+							span.checkbox
+							span.checkbox-label Свобода и возможность путешествовать
+						label.other-option
+							input(type='checkbox' name='question_3')
+							span.checkbox
+							span.checkbox-label Другое
+							input(type='text' name='question_3_other' placeholder='Свой вариант ответа')
 					.radio-group
-						.label Ваш пол
-						.toggler
-							label
-								input(type='radio' name="")
-								span.radio-icon
-									img(src="./assets/svg/female.svg" alt="")
-							label
-								input(type='radio' name="")
-								span.radio-icon
-									img(src="./assets/svg/male.svg" alt="")
+						.label Как вы проводите свое свободное время?
+						label
+							input(type='radio' name='question_4')
+							span.radio
+							span.radio-label Бездельничаю дома
+						label
+							input(type='radio' name='question_4')
+							span.radio
+							span.radio-label Читаю книги
+						label
+							input(type='radio' name='question_4')
+							span.radio
+							span.radio-label Встречаюсь с друзьями
+						label
+							input(type='radio' name='question_4')
+							span.radio
+							span.radio-label Встречаюсь с друзьями
+						label
+							input(type='radio' name='question_4')
+							span.radio
+							span.radio-label Хожу на вокал/танцы/рисование (есть хобби)
+						label
+							input(type='radio' name='question_4')
+							span.radio
+							span.radio-label Хожу в кино
+						label
+							input(type='radio' name='question_4')
+							span.radio
+							span.radio-label Предпочитаю активный отдых - летом ролики, зимой коньки :)
+						label.other-option
+							input(type='radio' name='question_4')
+							span.radio
+							span.radio-label Другое
+							input(type='text' name='question_4_other' placeholder='Свой вариант ответа')
+			.tab
+				.panel
+					.checkbox-group
+						.label Решение каких проблем наиболее актуально для вас на данный момент:
+						label
+							input(type='checkbox' name='question_5')
+							span.checkbox
+							span.checkbox-label Хочу похудеть
+						label
+							input(type='checkbox' name='question_5')
+							span.checkbox
+							span.checkbox-label Хочу здоровых отношений с любимым мужчиной
+						label
+							input(type='checkbox' name='question_5')
+							span.checkbox
+							span.checkbox-label Хочу реализоваться и найти себя
+						label
+							input(type='checkbox' name='question_5')
+							span.checkbox
+							span.checkbox-label Хочу больше зарабатывать
+						label.other-option
+							input(type='checkbox' name='question_5')
+							span.checkbox
+							span.checkbox-label Другое
+							input(type='text' name='question_5_other' placeholder='Свой вариант ответа')
+					label
+						.label
+							| Что способствовало возникновению этих проблем в вашей жизни?
+							br
+							| Поделитесь в паре слов (ОТКРЫТЫЙ ВОПРОС)
+						.textarea
+							strong Ответ: 
+							textarea(type='text' name='question_6' placeholder='Ваш ответ')
+					.radio-group
+						.label Что мешает вам справиться с этой проблемой?
+						label
+							input(type='radio' name='question_7')
+							span.radio
+							span.radio-label Не хватает мотивации
+						label
+							input(type='radio' name='question_7')
+							span.radio
+							span.radio-label Я просто не знаю, как это сделать
+						label
+							input(type='radio' name='question_7')
+							span.radio
+							span.radio-label Есть страх, что не получится, а тогда зачем начинать
+						label.other-option
+							input(type='radio' name='question_7')
+							span.radio
+							span.radio-label Другое
+							input(type='text' name='question_7_other' placeholder='Свой вариант ответа')
+			.tab
+				.panel
+					.radio-group
+						.label Пробовали ли вы уже решить свои сложности?
+						label
+							input(type='radio' name='question_8')
+							span.radio
+							span.radio-label Да
+						label
+							input(type='radio' name='question_8')
+							span.radio
+							span.radio-label Нет
+					.radio-group
+						.label Пробовали ли вы уже решить свои сложности?
+						label
+							input(type='radio' name='question_9')
+							span.radio
+							span.radio-label Курсы
+						label
+							input(type='radio' name='question_9')
+							span.radio
+							span.radio-label Тренинги
+						label
+							input(type='radio' name='question_9')
+							span.radio
+							span.radio-label Марафоны
+						label
+							input(type='radio' name='question_9')
+							span.radio
+							span.radio-label Консультации
+						label
+							input(type='radio' name='question_9')
+							span.radio
+							span.radio-label Дополнительное обучение
+						label.other-option
+							input(type='radio' name='question_9')
+							span.radio
+							span.radio-label Другое
+							input(type='text' name='question_9_other' placeholder='Свой вариант ответа')
+					label
+						.label Поделитесь о своем опыте. Какие курсы/тренинги по теме решения вашей проблемы вы проходили? Что понравилось, а что нет? (ОТКРЫТЫЙ ВОПРОС)
+						.textarea
+							strong Ответ:
+							textarea(type='text' name='share_your_experience' placeholder='Ваш ответ')
+					.radio-group
+						.label Пробовали ли вы уже решить свои сложности?
+						label
+							input(type='radio' name='question_10')
+							span.radio
+							span.radio-label Да
+						label
+							input(type='radio' name='question_10')
+							span.radio
+							span.radio-label Нет
+					label
+						.label Поделитесь о своем опыте. Какие курсы/тренинги по теме решения вашей проблемы вы проходили? Что понравилось, а что нет? (ОТКРЫТЫЙ ВОПРОС)
+						.textarea
+							strong Ответ:
+							textarea(type='text' name='question_11' placeholder='Ваш ответ')
 			.tab
 				.panel
 					label
-						.label Ваше ФИО
-						input(type='text' placeholder='Иванов Иван Иванович')
-					label
-						.label Ваш номер телефона для связи
-						input(type='tel' placeholder='+7 (999) 999 99-99')
-					label
-						.label Ваша электронная почта, куда отправить подарок после заполнения анкеты
-						input(type='tel' placeholder='example@mail.com')
-
-			.tab
-				.panel
-					label
-						.label Ваше ФИО
-						input(type='text' placeholder='Иванов Иван Иванович')
-					label
-						.label Ваш номер телефона для связи
-						input(type='tel' placeholder='+7 (999) 999 99-99')
-					label
-						.label Ваша электронная почта, куда отправить подарок после заполнения анкеты
-						input(type='tel' placeholder='example@mail.com')
-
-		//- Tab Group #4 - thanks
-		.tab-group.thanks
-			.tab
+						.label Какой для вас идеальный результат в решении своей проблемы? К чему хотите прийти? (ОТКРЫТЫЙ ВОПРОС)
+						.textarea
+							strong Ответ:
+							textarea(type='text' name='question_12' placeholder='Ваш ответ')
+					.radio-group
+						.label Как изменится ваша жизнь после достижения желаемой цели?
+						label
+							input(type='radio' name='question_13')
+							span.radio
+							span.radio-label Стану свободным человеком
+						label
+							input(type='radio' name='question_13')
+							span.radio
+							span.radio-label Буду чувствовать себя более уверенно
+						label
+							input(type='radio' name='question_13')
+							span.radio
+							span.radio-label Приду к гармонии с собой
+						label.other-option
+							input(type='radio' name='question_13')
+							span.radio
+							span.radio-label Другое
+							input(type='text' name='question_13_other' placeholder='Свой вариант ответа')
+					.radio-group
+						.label За какой помощью вы бы обратились ко мне?
+						label
+							input(type='radio' name='question_14')
+							span.radio
+							span.radio-label Помощь в снижении веса
+						label
+							input(type='radio' name='question_14')
+							span.radio
+							span.radio-label Помощь в отношениях с мужчинами
+						label
+							input(type='radio' name='question_14')
+							span.radio
+							span.radio-label Помощь в поиске себя и реализации
+						label
+							input(type='radio' name='question_14')
+							span.radio
+							span.radio-label Помощь в выходе на новый уровень заработка
+						label.other-option
+							input(type='radio' name='question_14')
+							span.radio
+							span.radio-label Другое
+							input(type='text' name='question_14_other' placeholder='Свой вариант ответа')
+			.tab.thanks
 				.panel.green
-					p Интересный факт: Знали ли вы, что одним из главных инструментов счастливой женщины является сон? Только хорошо отдохнувшая женщина может чувствовать себя счастливой. Поэтому стоит чаще уделять время отдыху и внести его в свое расписание;) 
-				
+					p Интересный факт: Знали ли вы, что одним из главных инструментов счастливой женщины является сон? Только хорошо отдохнувшая женщина может чувствовать себя счастливой. Поэтому стоит чаще уделять время отдыху и внести его в свое расписание;)
 				.message
 					h2 Финальный этап
 					img(src="./assets/images/photo-2.jpg", alt="" loading="lazy")
 					a.button.button-green(href="#" onclick='nextPrev(1)') Продолжить
-
-		//- Tab Group #5
+		//- Tab Group #3
 		.tab-group
 			.tab
 				.panel
-					label.required
-						.label Ваше ФИО группа 5!
-						input(type='text' placeholder='Иванов Иван Иванович' required)
-					label.required
-						.label Ваш номер телефона для связи  группа 5!
-						input(type='tel' placeholder='+7 (999) 999 99-99' required)
-					label.required
-						.label Ваша электронная почта, куда отправить подарок после заполнения анкеты
-						input(type='tel' placeholder='example@mail.com' required)
-
-					.radio-group
-						.label Ваш пол
-						.toggler
-							label
-								input(type='radio' name="")
-								span.radio-icon
-									img(src="./assets/svg/female.svg" alt="")
-							label
-								input(type='radio' name="")
-								span.radio-icon
-									img(src="./assets/svg/male.svg" alt="")
+					label
+						.label Поделитесь своими кумирами? Кем вы вдохновляетесь? Чьи результаты хотели бы повторить?
+						.textarea
+							strong Ответ:
+							textarea(type='text' name='question_15' placeholder='Ваш ответ')
 			.tab
 				.panel
 					label
-						.label Ваше ФИО
-						input(type='text' placeholder='Иванов Иван Иванович')
-					label
-						.label Ваш номер телефона для связи
-						input(type='tel' placeholder='+7 (999) 999 99-99')
-					label
-						.label Ваша электронная почта, куда отправить подарок после заполнения анкеты
-						input(type='tel' placeholder='example@mail.com')
-
+						.label Какие действия вы бы повторили за своими кумирами, а какие бы никогда не стали делать?
+						.textarea
+							strong Ответ:
+							textarea(type='text' name='question_16' placeholder='Ваш ответ')
 			.tab
 				.panel
 					label
-						.label Ваше ФИО
-						input(type='text' placeholder='Иванов Иван Иванович')
-					label
-						.label Ваш номер телефона для связи
-						input(type='tel' placeholder='+7 (999) 999 99-99')
-					label
-						.label Ваша электронная почта, куда отправить подарок после заполнения анкеты
-						input(type='tel' placeholder='example@mail.com')
-
-		//- Tab Group #6 - thanks
-		.tab-group.thanks
+						.label Почему вы подписаны на меня?
+						.textarea
+							strong Ответ:
+							textarea(type='text' name='question_17' placeholder='Ваш ответ')
 			.tab
+				.panel
+					label
+						.label Если бы вы пошли ко мне учиться, то какой продукт вы бы ждали от меня?  (ОТКРЫТЫЙ ВОПРОС)
+						.textarea
+							strong Ответ:
+							textarea(type='text' name='question_18' placeholder='Ваш ответ')
+			.tab
+				.panel
+					label
+						.label А что бы вас стимулировало начать обучение у меня уже сегодня?
+						.textarea
+							strong Ответ:
+							textarea(type='text' name='question_19' placeholder='Ваш ответ')
+			.tab.thanks
 				.panel.green
 					p Если женщина счастлива, то счастливы все. Моя миссия - делать женщин счастливыми. И я рада, что вы мне сегодня в этом помогли.
-				
 				.message
 					h2 Спасибо большое за заполнение анкеты! Она поможет мне давать вам самый интересный контент и творить лучшее для вас. 
 					img(src="./assets/images/photo-3.jpg", alt="" loading="lazy")

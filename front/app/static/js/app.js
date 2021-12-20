@@ -7,58 +7,31 @@ document.addEventListener('DOMContentLoaded', function () {
 
 var currentTab = 0; // Current tab is set to be the first tab (0)
 var currentTabGroup = 0;
-var currentHeader = 0;
+var currentTabGroupThanks = 0;
+var currentTabIndex = 0;
+var tabsCounter = document.querySelectorAll('.tab-group')[currentTabGroup].querySelectorAll('.tab').length;
 
 showTab(currentTab); // Display the current tab
-initRadio(); // автоматом заполняем name всем группам радио боксов
-initCheckbox(); // автоматом заполняем name всем группам чекбоксов
-
-
-// init all .radio-groups
-function initRadio() {
-	const radioGr = document.querySelectorAll('.radio-group');
-	if (radioGr !== null) {
-		for (const element of radioGr) {
-			const index = [...radioGr].indexOf(element);
-			[...element.querySelectorAll('input[type="radio"]')].map(e => e.setAttribute('name', 'radio-group-' + index));
-		}
-	}
-}
-
-// init all .checkbox-groups
-function initCheckbox() {
-	const checkboxGr = document.querySelectorAll('.checkbox-group');
-	if (checkboxGr !== null) {
-		for (const element of checkboxGr) {
-			const index = [...checkboxGr].indexOf(element);
-			[...element.querySelectorAll('input[type="checkbox"]')].map(e => e.setAttribute('name', 'checkbox-group-' + index));
-		}
-	}
-}
-
 
 // show .form-header 
 function showHeader() {
 	const headers = document.querySelectorAll('.form-header');
 
-
-	if (document.querySelectorAll('.tab-group')[currentTabGroup].matches('.thanks')) {
+	if (document.querySelectorAll('.tab')[currentTab].matches('.thanks')) {
+		currentTabGroupThanks++;
 		[...headers].map(e => e.classList.remove('show'));
-	} else {
-		[...headers].map(e => e.classList.remove('show'));
-		if (currentTabGroup == 0) {
-			if (currentTab == 0) {
-				headers[0].classList.add('show');
-				currentHeader = 1;
-			} else {
-				headers[currentHeader].classList.add('show');
-			}
-		} else {
-			headers[currentHeader].classList.add('show');
-		}
+		return;
 	}
-
-
+	[...headers].map(e => e.classList.remove('show'));
+	if (currentTabGroup === 0) {
+		if (currentTab === 0) {
+			headers[0].classList.add('show');
+		} else {
+			headers[currentTab - currentTabGroupThanks].classList.add('show');
+		}
+	} else {
+		headers[currentTab - currentTabGroupThanks].classList.add('show');
+	}
 }
 
 // progress line
@@ -66,12 +39,13 @@ function progress() {
 	const progress = document.querySelector('.progress');
 	if (progress !== null) {
 		// Progress Line
-		var currentProgress = (100 / document.querySelectorAll(".tab").length) * (currentTab + 1);
+		var currentTabNumber = currentTab - currentTabGroupThanks + 1;
+		var currentProgress = (100 / document.querySelectorAll(".tab:not(.thanks)").length) * currentTabNumber;
 		progress.querySelector('.progress-done').style.width = currentProgress + "%";
 
 		// Counter
-		progress.querySelector('.total-pages').textContent = document.querySelectorAll(".tab").length; // total pages
-		progress.querySelector('.current-page').textContent = currentTab + 1; // current page
+		progress.querySelector('.total-pages').textContent = document.querySelectorAll(".tab:not(.thanks)").length; // total pages
+		progress.querySelector('.current-page').textContent = currentTabNumber; // current page
 	}
 }
 
@@ -84,55 +58,38 @@ function showTab(n) {
 		var x = document.querySelectorAll(".tab");
 		x[n].classList.add('active');
 		// ... and fix the Previous/Next buttons:
-		if (n == 0) {
-			document.querySelector("#prevBtn").style.display = "none";
+		if(currentTab === 0) {
 			document.querySelector('#nextBtn').textContent = "Начнем!";
+		}
+		if (tabsCounter === document.querySelectorAll('.tab-group')[currentTabGroup].querySelectorAll('.tab').length || document.querySelectorAll('.tab')[currentTab].matches('.thanks')) {
+			document.querySelector('#prevBtn').classList.add('hide');
+			document.querySelector('#prevBtn').classList.remove('show');
 		} else {
-			document.querySelector("#prevBtn").style.display = "inline";
+			document.querySelector('#prevBtn').classList.add('show');
+			document.querySelector('#prevBtn').classList.remove('hide');
 			document.querySelector('#nextBtn').textContent = "Дальше"
 		}
-		if ((n + 1) == x.length) {
+		if ((n + 1) === x.length) {
 			document.querySelector("#nextBtn").innerHTML = "Готово";
 		}
 	}
 
 }
 
-var tabsCounter = document.querySelectorAll('.tab-group')[currentTabGroup].querySelectorAll('.tab').length;
-
-
 function nextPrev(n) {
-	// This function will figure out which tab to display	
-	var x = document.getElementsByClassName("tab");
+	// This function will figure out which tab to display
+	var x = document.querySelectorAll(".tab");
 	// Exit the function if any field in the current tab is invalid:
 
-	if (n == 1 && !validateForm()) return false;
+	if (n === 1 && !validateForm()) return false;
 	// Hide the current tab:
 	x[currentTab].classList.remove('active');
 	// Increase or decrease the current tab by 1:
-	currentTab = currentTab + n;
+	currentTab += n;
 
-	if (n > 0) {
-		tabsCounter -= 1;
-		console.log('Вперед!')
-		if (tabsCounter <= 0) {
-			nextGroup();
-		}
-		if (tabsCounter == document.querySelectorAll('.tab-group')[currentTabGroup].querySelectorAll('.tab').length) {
-			document.querySelector('#prevBtn').classList.add('hide');
-		} else {
-			document.querySelector('#prevBtn').classList.remove('hide');
-		}
-	}
-
-	if (n < 0) {
-		tabsCounter += 1;
-		if (tabsCounter == document.querySelectorAll('.tab-group')[currentTabGroup].querySelectorAll('.tab').length) {
-			document.querySelector('#prevBtn').classList.add('hide');
-		} else {
-			document.querySelector('#prevBtn').classList.remove('hide');
-		}
-		console.log('Назад!')
+	tabsCounter += n > 0 ? -1 : 1;
+	if (tabsCounter <= 0) {
+		nextGroup();
 	}
 
 
@@ -140,29 +97,26 @@ function nextPrev(n) {
 	if (currentTab >= x.length) {
 		return false;
 	}
+
+	if (document.querySelectorAll('.tab')[currentTab].matches('.thanks')) {
+		hideFormUI();
+	} else {
+		showFormUI();
+	}
+
 	// Otherwise, display the correct tab:
 	showTab(currentTab);
-
 }
 
 function nextGroup() {
-	currentTabGroup += 1;
-	
-	if (!(document.querySelectorAll('.tab-group')[currentTabGroup].matches('.thanks'))) {
-		currentHeader += 1;
-	}
+	currentTabGroup++;
+
 	// обнуляем счетчик табов в текущем tab group
 	tabsCounter = document.querySelectorAll('.tab-group')[currentTabGroup].querySelectorAll('.tab').length;
 	document.querySelector('#prevBtn').classList.add('hide');
 
 	[...document.querySelectorAll('.tab-group')].map(e => e.classList.remove('active'));
 	document.querySelectorAll('.tab-group')[currentTabGroup].classList.add('active');
-
-	if (document.querySelectorAll('.tab-group')[currentTabGroup].matches('.thanks')) {
-		hideFormUI();
-	} else {
-		showFormUI();
-	}
 }
 
 function hideFormUI() {
