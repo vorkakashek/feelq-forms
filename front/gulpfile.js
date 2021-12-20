@@ -10,6 +10,9 @@ const {
 var scss = require('gulp-sass')(require('sass'));
 var browserSync = require('browser-sync').create();
 
+const minify = require('gulp-minify');
+const sourcemaps = require('gulp-sourcemaps');
+const concat = require('gulp-concat');
 const pug = require('gulp-pug');
 const babel = require('gulp-babel');
 const autoprefixer = require('gulp-autoprefixer');
@@ -56,6 +59,9 @@ function buildJs() {
 		.pipe(babel({
 			presets: ['@babel/env']
 		}))
+		.pipe(sourcemaps.init())
+		.pipe(sourcemaps.write('.'))
+		.pipe(minify())
 		.pipe(dest('build/js/'))
 		.pipe(browserSync.stream())
 }
