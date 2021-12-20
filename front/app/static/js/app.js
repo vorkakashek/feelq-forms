@@ -5,8 +5,8 @@ document.addEventListener('DOMContentLoaded', function () {
 	console.log('ready!')
 }, false);
 
-Inputmask('phone').mask('input[name="phone"]');
-Inputmask('email').mask('input[name="email"]');
+Inputmask('phone').mask('input.phone');
+Inputmask('email').mask('input.email');
 
 var currentTab = 0; // Current tab is set to be the first tab (0)
 var currentTabGroup = 0;
@@ -145,16 +145,33 @@ function validateForm() {
 	requireds = tab.querySelectorAll(".required");
 
 	for (var i = 0; i < requireds.length; i++) {
-
-		if (requireds[i].matches('.input')) { // если есть класс .input
-			if (requireds[i].querySelectorAll('input[type="text"]').length > 0) { // значит ищем внутри все инпуты
-				const inputs = requireds[i].querySelectorAll('input[type="text"]');
+		if (requireds[i].matches('.input')) {
+			let inputs = requireds[i].querySelectorAll('input[type="text"]');
+			if (inputs.length > 0) {
 				for (var j = 0; j < inputs.length; j++) {
-					if (inputs[j].value == "") {
+					if (inputs[j].value === "") {
 						inputs[j].closest('.input').className += " invalid";
 						valid = false;
 					}
-
+				}
+			}
+			inputs = requireds[i].querySelectorAll('input.phone');
+			if (inputs.length > 0) {
+				for (var j = 0; j < inputs.length; j++) {
+					if (!Inputmask('phone').mask(inputs[j]).isComplete()) {
+						inputs[j].closest('.input').className += " invalid";
+						valid = false;
+					}
+				}
+			}
+			inputs = requireds[i].querySelectorAll('input.email');
+			if (inputs.length > 0) {
+				// TODO: Email
+				for (var j = 0; j < inputs.length; j++) {
+					if (!Inputmask('email').mask(inputs[j]).isComplete()) {
+						inputs[j].closest('.input').className += " invalid";
+						valid = false;
+					}
 				}
 			}
 		}
@@ -176,11 +193,11 @@ function validateForm() {
 		}
 
 		// для текстареа групп
-		if (requireds[i].matches('.textarea')) { // если есть класс .input
-			if (requireds[i].querySelectorAll('textarea').length > 0) { // значит ищем внутри все инпуты
-				const inputs = requireds[i].querySelectorAll('textarea');
+		if (requireds[i].matches('.textarea')) {
+			const inputs = requireds[i].querySelectorAll('textarea');
+			if (inputs.length > 0) {
 				for (var j = 0; j < inputs.length; j++) {
-					if (inputs[j].value == "") {
+					if (inputs[j].value === "") {
 						inputs[j].closest('.textarea').className += " invalid";
 						valid = false;
 					}
@@ -195,26 +212,30 @@ function validateForm() {
 
 // Убираем .invalid если инпут начали заполнять / выбран хоть 1 чек/радио-бокс
 // для инпутов
-for (var i = 0; i < document.querySelectorAll('.required input[type="text"]').length; i++) {
-	document.querySelectorAll('.required input[type="text"]')[i].addEventListener("input", e => {
+let inputs = document.querySelectorAll('.required input[type="text"]');
+for (var i = 0; i < inputs.length; i++) {
+	inputs[i].addEventListener("input", e => {
 		e.target.closest('.required').classList.remove('invalid');
 	});
 }
 // для радио
-for (var i = 0; i < document.querySelectorAll('.required input[type="radio"]').length; i++) {
-	document.querySelectorAll('.required input[type="radio"]')[i].addEventListener("input", e => {
+inputs = document.querySelectorAll('.required input[type="radio"]');
+for (var i = 0; i < inputs.length; i++) {
+	inputs[i].addEventListener("input", e => {
 		e.target.closest('.required').classList.remove('invalid');
 	});
 }
 // для чекбоксов
-for (var i = 0; i < document.querySelectorAll('.required input[type="checkbox"]').length; i++) {
-	document.querySelectorAll('.required input[type="checkbox"]')[i].addEventListener("input", e => {
+inputs = document.querySelectorAll('.required input[type="checkbox"]');
+for (var i = 0; i < inputs.length; i++) {
+	inputs[i].addEventListener("input", e => {
 		e.target.closest('.required').classList.remove('invalid');
 	});
 }
 // для textarea
-for (var i = 0; i < document.querySelectorAll('.required textarea').length; i++) {
-	document.querySelectorAll('.required textarea')[i].addEventListener("input", e => {
+inputs = document.querySelectorAll('.required textarea');
+for (var i = 0; i < inputs.length; i++) {
+	inputs[i].addEventListener("input", e => {
 		e.target.closest('.required').classList.remove('invalid');
 	});
 }

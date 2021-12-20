@@ -15,8 +15,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 document.addEventListener('DOMContentLoaded', function () {
   console.log('ready!');
 }, false);
-Inputmask('phone').mask('input[name="phone"]');
-Inputmask('email').mask('input[name="email"]');
+Inputmask('phone').mask('input.phone');
+Inputmask('email').mask('input.email');
 var currentTab = 0; // Current tab is set to be the first tab (0)
 
 var currentTabGroup = 0;
@@ -171,14 +171,35 @@ function validateForm() {
 
   for (var i = 0; i < requireds.length; i++) {
     if (requireds[i].matches('.input')) {
-      // если есть класс .input
-      if (requireds[i].querySelectorAll('input[type="text"]').length > 0) {
-        // значит ищем внутри все инпуты
-        var inputs = requireds[i].querySelectorAll('input[type="text"]');
+      var _inputs = requireds[i].querySelectorAll('input[type="text"]');
 
-        for (var j = 0; j < inputs.length; j++) {
-          if (inputs[j].value == "") {
-            inputs[j].closest('.input').className += " invalid";
+      if (_inputs.length > 0) {
+        for (var j = 0; j < _inputs.length; j++) {
+          if (_inputs[j].value === "") {
+            _inputs[j].closest('.input').className += " invalid";
+            valid = false;
+          }
+        }
+      }
+
+      _inputs = requireds[i].querySelectorAll('input.phone');
+
+      if (_inputs.length > 0) {
+        for (var j = 0; j < _inputs.length; j++) {
+          if (!Inputmask('phone').mask(_inputs[j]).isComplete()) {
+            _inputs[j].closest('.input').className += " invalid";
+            valid = false;
+          }
+        }
+      }
+
+      _inputs = requireds[i].querySelectorAll('input.email');
+
+      if (_inputs.length > 0) {
+        // TODO: Email
+        for (var j = 0; j < _inputs.length; j++) {
+          if (!Inputmask('email').mask(_inputs[j]).isComplete()) {
+            _inputs[j].closest('.input').className += " invalid";
             valid = false;
           }
         }
@@ -203,14 +224,12 @@ function validateForm() {
 
 
     if (requireds[i].matches('.textarea')) {
-      // если есть класс .input
-      if (requireds[i].querySelectorAll('textarea').length > 0) {
-        // значит ищем внутри все инпуты
-        var _inputs = requireds[i].querySelectorAll('textarea');
+      var _inputs2 = requireds[i].querySelectorAll('textarea');
 
-        for (var j = 0; j < _inputs.length; j++) {
-          if (_inputs[j].value == "") {
-            _inputs[j].closest('.textarea').className += " invalid";
+      if (_inputs2.length > 0) {
+        for (var j = 0; j < _inputs2.length; j++) {
+          if (_inputs2[j].value === "") {
+            _inputs2[j].closest('.textarea').className += " invalid";
             valid = false;
           }
         }
@@ -223,29 +242,37 @@ function validateForm() {
 // для инпутов
 
 
-for (var i = 0; i < document.querySelectorAll('.required input[type="text"]').length; i++) {
-  document.querySelectorAll('.required input[type="text"]')[i].addEventListener("input", function (e) {
+var inputs = document.querySelectorAll('.required input[type="text"]');
+
+for (var i = 0; i < inputs.length; i++) {
+  inputs[i].addEventListener("input", function (e) {
     e.target.closest('.required').classList.remove('invalid');
   });
 } // для радио
 
 
-for (var i = 0; i < document.querySelectorAll('.required input[type="radio"]').length; i++) {
-  document.querySelectorAll('.required input[type="radio"]')[i].addEventListener("input", function (e) {
+inputs = document.querySelectorAll('.required input[type="radio"]');
+
+for (var i = 0; i < inputs.length; i++) {
+  inputs[i].addEventListener("input", function (e) {
     e.target.closest('.required').classList.remove('invalid');
   });
 } // для чекбоксов
 
 
-for (var i = 0; i < document.querySelectorAll('.required input[type="checkbox"]').length; i++) {
-  document.querySelectorAll('.required input[type="checkbox"]')[i].addEventListener("input", function (e) {
+inputs = document.querySelectorAll('.required input[type="checkbox"]');
+
+for (var i = 0; i < inputs.length; i++) {
+  inputs[i].addEventListener("input", function (e) {
     e.target.closest('.required').classList.remove('invalid');
   });
 } // для textarea
 
 
-for (var i = 0; i < document.querySelectorAll('.required textarea').length; i++) {
-  document.querySelectorAll('.required textarea')[i].addEventListener("input", function (e) {
+inputs = document.querySelectorAll('.required textarea');
+
+for (var i = 0; i < inputs.length; i++) {
+  inputs[i].addEventListener("input", function (e) {
     e.target.closest('.required').classList.remove('invalid');
   });
 }
