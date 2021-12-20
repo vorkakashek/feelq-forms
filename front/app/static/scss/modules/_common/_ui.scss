@@ -61,6 +61,12 @@ p {
 		.label {
 			color: var(--error);
 		}
+
+		input,
+		textarea {
+			background-color: #ffdddd;
+		}
+		
 	}
 
 	.label {
@@ -92,7 +98,7 @@ input {
 }
 
 
-.textarea {
+.textarea-style {
 	padding: 16px 20px;
 	background-color: var(--input-bg);
 	border-radius: 2px;
@@ -127,6 +133,8 @@ textarea {
 	align-items: center;
 	padding: 20px 0;
 }
+
+
 
 .button {
 	font-size: 16px;

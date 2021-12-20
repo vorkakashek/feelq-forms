@@ -71,18 +71,18 @@ main
 		.tab-group.active
 			.tab
 				.panel
-					label.required
+					label.required.input
 						.label Ваше ФИО
 						input(type='text' name='name' placeholder='Иванов Иван Иванович' required)
-					label.required
+					label.required.input
 						.label Ваш номер телефона для связи
 						input(type='text' name='phone' placeholder='+7 (999) 999 99-99' required)
-					label.required
+					label.required.input
 						.label Ваша электронная почта, куда отправить подарок после заполнения анкеты
 						input(type='text' name='email' placeholder='example@mail.com' required)
 			.tab
 				.panel
-					.radio-group
+					.radio-group.required
 						.label Ваш пол
 						.toggler
 							label
@@ -267,7 +267,7 @@ main
 		.tab-group
 			.tab
 				.panel
-					.checkbox-group
+					.checkbox-group.required
 						.label Поделитесь, что для вас является самым важным в жизни. Можно выбрать несколько вариантов:
 						label
 							input(type='checkbox' name='question_3')
@@ -298,7 +298,7 @@ main
 							span.checkbox
 							span.checkbox-label Другое
 							input(type='text' name='question_3_other' placeholder='Свой вариант ответа')
-					.radio-group
+					.radio-group.required
 						.label Как вы проводите свое свободное время?
 						label
 							input(type='radio' name='question_4')
@@ -335,7 +335,7 @@ main
 							input(type='text' name='question_4_other' placeholder='Свой вариант ответа')
 			.tab
 				.panel
-					.checkbox-group
+					.checkbox-group.required
 						.label Решение каких проблем наиболее актуально для вас на данный момент:
 						label
 							input(type='checkbox' name='question_5')
@@ -358,15 +358,15 @@ main
 							span.checkbox
 							span.checkbox-label Другое
 							input(type='text' name='question_5_other' placeholder='Свой вариант ответа')
-					label
+					label.textarea.required
 						.label
 							| Что способствовало возникновению этих проблем в вашей жизни?
 							br
 							| Поделитесь в паре слов (ОТКРЫТЫЙ ВОПРОС)
-						.textarea
+						.textarea-style
 							strong Ответ: 
 							textarea(type='text' name='question_6' placeholder='Ваш ответ')
-					.radio-group
+					.radio-group.required
 						.label Что мешает вам справиться с этой проблемой?
 						label
 							input(type='radio' name='question_7')
@@ -387,7 +387,7 @@ main
 							input(type='text' name='question_7_other' placeholder='Свой вариант ответа')
 			.tab
 				.panel
-					.radio-group
+					.radio-group.required
 						.label Пробовали ли вы уже решить свои сложности?
 						label
 							input(type='radio' name='question_8')
@@ -397,7 +397,7 @@ main
 							input(type='radio' name='question_8')
 							span.radio
 							span.radio-label Нет
-					.radio-group
+					.radio-group.required
 						.label Пробовали ли вы уже решить свои сложности?
 						label
 							input(type='radio' name='question_9')
@@ -424,12 +424,12 @@ main
 							span.radio
 							span.radio-label Другое
 							input(type='text' name='question_9_other' placeholder='Свой вариант ответа')
-					label
+					label.textarea.required
 						.label Поделитесь о своем опыте. Какие курсы/тренинги по теме решения вашей проблемы вы проходили? Что понравилось, а что нет? (ОТКРЫТЫЙ ВОПРОС)
-						.textarea
+						.textarea-style
 							strong Ответ:
 							textarea(type='text' name='share_your_experience' placeholder='Ваш ответ')
-					.radio-group
+					.radio-group.required
 						.label Пробовали ли вы уже решить свои сложности?
 						label
 							input(type='radio' name='question_10')
@@ -439,19 +439,19 @@ main
 							input(type='radio' name='question_10')
 							span.radio
 							span.radio-label Нет
-					label
+					label.textarea.required
 						.label Поделитесь о своем опыте. Какие курсы/тренинги по теме решения вашей проблемы вы проходили? Что понравилось, а что нет? (ОТКРЫТЫЙ ВОПРОС)
-						.textarea
+						.textarea-style
 							strong Ответ:
 							textarea(type='text' name='question_11' placeholder='Ваш ответ')
 			.tab
 				.panel
-					label
+					label.textarea.required
 						.label Какой для вас идеальный результат в решении своей проблемы? К чему хотите прийти? (ОТКРЫТЫЙ ВОПРОС)
-						.textarea
+						.textarea-style
 							strong Ответ:
 							textarea(type='text' name='question_12' placeholder='Ваш ответ')
-					.radio-group
+					.radio-group.required
 						.label Как изменится ваша жизнь после достижения желаемой цели?
 						label
 							input(type='radio' name='question_13')
@@ -470,7 +470,7 @@ main
 							span.radio
 							span.radio-label Другое
 							input(type='text' name='question_13_other' placeholder='Свой вариант ответа')
-					.radio-group
+					.radio-group.required
 						.label За какой помощью вы бы обратились ко мне?
 						label
 							input(type='radio' name='question_14')
@@ -504,37 +504,37 @@ main
 		.tab-group
 			.tab
 				.panel
-					label
+					label.textarea.required
 						.label Поделитесь своими кумирами? Кем вы вдохновляетесь? Чьи результаты хотели бы повторить?
-						.textarea
+						.textarea-style
 							strong Ответ:
 							textarea(type='text' name='question_15' placeholder='Ваш ответ')
 			.tab
 				.panel
-					label
+					label.textarea.required
 						.label Какие действия вы бы повторили за своими кумирами, а какие бы никогда не стали делать?
-						.textarea
+						.textarea-style
 							strong Ответ:
 							textarea(type='text' name='question_16' placeholder='Ваш ответ')
 			.tab
 				.panel
-					label
+					label.textarea.required
 						.label Почему вы подписаны на меня?
-						.textarea
+						.textarea-style
 							strong Ответ:
 							textarea(type='text' name='question_17' placeholder='Ваш ответ')
 			.tab
 				.panel
-					label
+					label.textarea.required
 						.label Если бы вы пошли ко мне учиться, то какой продукт вы бы ждали от меня?  (ОТКРЫТЫЙ ВОПРОС)
-						.textarea
+						.textarea-style
 							strong Ответ:
 							textarea(type='text' name='question_18' placeholder='Ваш ответ')
 			.tab
 				.panel
-					label
+					label.textarea.required
 						.label А что бы вас стимулировало начать обучение у меня уже сегодня?
-						.textarea
+						.textarea-style
 							strong Ответ:
 							textarea(type='text' name='question_19' placeholder='Ваш ответ')
 			.tab.thanks

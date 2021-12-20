@@ -108,6 +108,10 @@ p strong {
 .required.invalid .label {
   color: var(--error);
 }
+.required.invalid input,
+.required.invalid textarea {
+  background-color: #ffdddd;
+}
 .required .label:after {
   content: " *";
 }
@@ -142,12 +146,12 @@ input.invalid {
   background-color: #ffdddd;
 }
 
-.textarea {
+.textarea-style {
   padding: 16px 20px;
   background-color: var(--input-bg);
   border-radius: 2px;
 }
-.textarea strong {
+.textarea-style strong {
   font-weight: 700;
   font-size: 14px;
   margin-bottom: 10px;

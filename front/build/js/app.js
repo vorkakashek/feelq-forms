@@ -101,7 +101,7 @@ function nextPrev(n) {
   // This function will figure out which tab to display
   var x = document.querySelectorAll(".tab"); // Exit the function if any field in the current tab is invalid:
 
-  if (n === 1 && !validateForm()) return false; // Hide the current tab:
+  if (n == 1 && !validateForm()) return false; // Hide the current tab:
 
   x[currentTab].classList.remove('active'); // Increase or decrease the current tab by 1:
 
@@ -159,6 +159,91 @@ function showFormUI() {
 
 
 function validateForm() {
-  var valid = true;
+  // This function deals with validation of the form fields
+  var requireds,
+      tab,
+      required,
+      valid = true;
+  tab = document.querySelectorAll(".tab")[currentTab];
+  requireds = tab.querySelectorAll(".required");
+
+  for (var i = 0; i < requireds.length; i++) {
+    if (requireds[i].matches('.input')) {
+      // если есть класс .input
+      if (requireds[i].querySelectorAll('input[type="text"]').length > 0) {
+        // значит ищем внутри все инпуты
+        var inputs = requireds[i].querySelectorAll('input[type="text"]');
+
+        for (var j = 0; j < inputs.length; j++) {
+          if (inputs[j].value == "") {
+            inputs[j].closest('.input').className += " invalid";
+            valid = false;
+          }
+        }
+      }
+    } // для радио групп
+
+
+    if (requireds[i].matches('.radio-group')) {
+      if (!requireds[i].querySelector('input[type="radio"]:checked')) {
+        requireds[i].classList.add('invalid');
+        valid = false;
+      }
+    } // для чекбокс групп
+
+
+    if (requireds[i].matches('.checkbox-group')) {
+      if (!requireds[i].querySelector('input[type="checkbox"]:checked')) {
+        requireds[i].classList.add('invalid');
+        valid = false;
+      }
+    } // для текстареа групп
+
+
+    if (requireds[i].matches('.textarea')) {
+      // если есть класс .input
+      if (requireds[i].querySelectorAll('textarea').length > 0) {
+        // значит ищем внутри все инпуты
+        var _inputs = requireds[i].querySelectorAll('textarea');
+
+        for (var j = 0; j < _inputs.length; j++) {
+          if (_inputs[j].value == "") {
+            _inputs[j].closest('.textarea').className += " invalid";
+            valid = false;
+          }
+        }
+      }
+    }
+  }
+
   return valid; // return the valid status
+} // Убираем .invalid если инпут начали заполнять / выбран хоть 1 чек/радио-бокс
+// для инпутов
+
+
+for (var i = 0; i < document.querySelectorAll('.required input[type="text"]').length; i++) {
+  document.querySelectorAll('.required input[type="text"]')[i].addEventListener("input", function (e) {
+    e.target.closest('.required').classList.remove('invalid');
+  });
+} // для радио
+
+
+for (var i = 0; i < document.querySelectorAll('.required input[type="radio"]').length; i++) {
+  document.querySelectorAll('.required input[type="radio"]')[i].addEventListener("input", function (e) {
+    e.target.closest('.required').classList.remove('invalid');
+  });
+} // для чекбоксов
+
+
+for (var i = 0; i < document.querySelectorAll('.required input[type="checkbox"]').length; i++) {
+  document.querySelectorAll('.required input[type="checkbox"]')[i].addEventListener("input", function (e) {
+    e.target.closest('.required').classList.remove('invalid');
+  });
+} // для textarea
+
+
+for (var i = 0; i < document.querySelectorAll('.required textarea').length; i++) {
+  document.querySelectorAll('.required textarea')[i].addEventListener("input", function (e) {
+    e.target.closest('.required').classList.remove('invalid');
+  });
 }

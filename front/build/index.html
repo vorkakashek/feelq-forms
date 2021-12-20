@@ -100,15 +100,15 @@
         <div class="tab-group active">
           <div class="tab">
             <div class="panel">
-              <label class="required">
+              <label class="required input">
                 <div class="label">Ваше ФИО</div>
                 <input type="text" name="name" placeholder="Иванов Иван Иванович" required>
               </label>
-              <label class="required">
+              <label class="required input">
                 <div class="label">Ваш номер телефона для связи</div>
                 <input type="text" name="phone" placeholder="+7 (999) 999 99-99" required>
               </label>
-              <label class="required">
+              <label class="required input">
                 <div class="label">Ваша электронная почта, куда отправить подарок после заполнения анкеты</div>
                 <input type="text" name="email" placeholder="example@mail.com" required>
               </label>
@@ -116,7 +116,7 @@
           </div>
           <div class="tab">
             <div class="panel">
-              <div class="radio-group">
+              <div class="radio-group required">
                 <div class="label">Ваш пол</div>
                 <div class="toggler">
                   <label>
@@ -275,7 +275,7 @@
         <div class="tab-group">
           <div class="tab">
             <div class="panel">
-              <div class="checkbox-group">
+              <div class="checkbox-group required">
                 <div class="label">Поделитесь, что для вас является самым важным в жизни. Можно выбрать несколько вариантов:</div>
                 <label>
                   <input type="checkbox" name="question_3"><span class="checkbox"></span><span class="checkbox-label">Семья и друзья</span>
@@ -300,7 +300,7 @@
                   <input type="text" name="question_3_other" placeholder="Свой вариант ответа">
                 </label>
               </div>
-              <div class="radio-group">
+              <div class="radio-group required">
                 <div class="label">Как вы проводите свое свободное время?</div>
                 <label>
                   <input type="radio" name="question_4"><span class="radio"></span><span class="radio-label">Бездельничаю дома</span>
@@ -332,7 +332,7 @@
           </div>
           <div class="tab">
             <div class="panel">
-              <div class="checkbox-group">
+              <div class="checkbox-group required">
                 <div class="label">Решение каких проблем наиболее актуально для вас на данный момент:</div>
                 <label>
                   <input type="checkbox" name="question_5"><span class="checkbox"></span><span class="checkbox-label">Хочу похудеть</span>
@@ -351,13 +351,13 @@
                   <input type="text" name="question_5_other" placeholder="Свой вариант ответа">
                 </label>
               </div>
-              <label>
+              <label class="textarea required">
                 <div class="label">Что способствовало возникновению этих проблем в вашей жизни?<br>Поделитесь в паре слов (ОТКРЫТЫЙ ВОПРОС)</div>
-                <div class="textarea"><strong>Ответ: </strong>
+                <div class="textarea-style"><strong>Ответ: </strong>
                   <textarea type="text" name="question_6" placeholder="Ваш ответ"></textarea>
                 </div>
               </label>
-              <div class="radio-group">
+              <div class="radio-group required">
                 <div class="label">Что мешает вам справиться с этой проблемой?</div>
                 <label>
                   <input type="radio" name="question_7"><span class="radio"></span><span class="radio-label">Не хватает мотивации</span>
@@ -377,7 +377,7 @@
           </div>
           <div class="tab">
             <div class="panel">
-              <div class="radio-group">
+              <div class="radio-group required">
                 <div class="label">Пробовали ли вы уже решить свои сложности?</div>
                 <label>
                   <input type="radio" name="question_8"><span class="radio"></span><span class="radio-label">Да</span>
@@ -386,7 +386,7 @@
                   <input type="radio" name="question_8"><span class="radio"></span><span class="radio-label">Нет</span>
                 </label>
               </div>
-              <div class="radio-group">
+              <div class="radio-group required">
                 <div class="label">Пробовали ли вы уже решить свои сложности?</div>
                 <label>
                   <input type="radio" name="question_9"><span class="radio"></span><span class="radio-label">Курсы</span>
@@ -408,13 +408,13 @@
                   <input type="text" name="question_9_other" placeholder="Свой вариант ответа">
                 </label>
               </div>
-              <label>
+              <label class="textarea required">
                 <div class="label">Поделитесь о своем опыте. Какие курсы/тренинги по теме решения вашей проблемы вы проходили? Что понравилось, а что нет? (ОТКРЫТЫЙ ВОПРОС)</div>
-                <div class="textarea"><strong>Ответ:</strong>
+                <div class="textarea-style"><strong>Ответ:</strong>
                   <textarea type="text" name="share_your_experience" placeholder="Ваш ответ"></textarea>
                 </div>
               </label>
-              <div class="radio-group">
+              <div class="radio-group required">
                 <div class="label">Пробовали ли вы уже решить свои сложности?</div>
                 <label>
                   <input type="radio" name="question_10"><span class="radio"></span><span class="radio-label">Да</span>
@@ -423,9 +423,9 @@
                   <input type="radio" name="question_10"><span class="radio"></span><span class="radio-label">Нет</span>
                 </label>
               </div>
-              <label>
+              <label class="textarea required">
                 <div class="label">Поделитесь о своем опыте. Какие курсы/тренинги по теме решения вашей проблемы вы проходили? Что понравилось, а что нет? (ОТКРЫТЫЙ ВОПРОС)</div>
-                <div class="textarea"><strong>Ответ:</strong>
+                <div class="textarea-style"><strong>Ответ:</strong>
                   <textarea type="text" name="question_11" placeholder="Ваш ответ"></textarea>
                 </div>
               </label>
@@ -433,13 +433,13 @@
           </div>
           <div class="tab">
             <div class="panel">
-              <label>
+              <label class="textarea required">
                 <div class="label">Какой для вас идеальный результат в решении своей проблемы? К чему хотите прийти? (ОТКРЫТЫЙ ВОПРОС)</div>
-                <div class="textarea"><strong>Ответ:</strong>
+                <div class="textarea-style"><strong>Ответ:</strong>
                   <textarea type="text" name="question_12" placeholder="Ваш ответ"></textarea>
                 </div>
               </label>
-              <div class="radio-group">
+              <div class="radio-group required">
                 <div class="label">Как изменится ваша жизнь после достижения желаемой цели?</div>
                 <label>
                   <input type="radio" name="question_13"><span class="radio"></span><span class="radio-label">Стану свободным человеком</span>
@@ -455,7 +455,7 @@
                   <input type="text" name="question_13_other" placeholder="Свой вариант ответа">
                 </label>
               </div>
-              <div class="radio-group">
+              <div class="radio-group required">
                 <div class="label">За какой помощью вы бы обратились ко мне?</div>
                 <label>
                   <input type="radio" name="question_14"><span class="radio"></span><span class="radio-label">Помощь в снижении веса</span>
@@ -488,9 +488,9 @@
         <div class="tab-group">
           <div class="tab">
             <div class="panel">
-              <label>
+              <label class="textarea required">
                 <div class="label">Поделитесь своими кумирами? Кем вы вдохновляетесь? Чьи результаты хотели бы повторить?</div>
-                <div class="textarea"><strong>Ответ:</strong>
+                <div class="textarea-style"><strong>Ответ:</strong>
                   <textarea type="text" name="question_15" placeholder="Ваш ответ"></textarea>
                 </div>
               </label>
@@ -498,9 +498,9 @@
           </div>
           <div class="tab">
             <div class="panel">
-              <label>
+              <label class="textarea required">
                 <div class="label">Какие действия вы бы повторили за своими кумирами, а какие бы никогда не стали делать?</div>
-                <div class="textarea"><strong>Ответ:</strong>
+                <div class="textarea-style"><strong>Ответ:</strong>
                   <textarea type="text" name="question_16" placeholder="Ваш ответ"></textarea>
                 </div>
               </label>
@@ -508,9 +508,9 @@
           </div>
           <div class="tab">
             <div class="panel">
-              <label>
+              <label class="textarea required">
                 <div class="label">Почему вы подписаны на меня?</div>
-                <div class="textarea"><strong>Ответ:</strong>
+                <div class="textarea-style"><strong>Ответ:</strong>
                   <textarea type="text" name="question_17" placeholder="Ваш ответ"></textarea>
                 </div>
               </label>
@@ -518,9 +518,9 @@
           </div>
           <div class="tab">
             <div class="panel">
-              <label>
+              <label class="textarea required">
                 <div class="label">Если бы вы пошли ко мне учиться, то какой продукт вы бы ждали от меня?  (ОТКРЫТЫЙ ВОПРОС)</div>
-                <div class="textarea"><strong>Ответ:</strong>
+                <div class="textarea-style"><strong>Ответ:</strong>
                   <textarea type="text" name="question_18" placeholder="Ваш ответ"></textarea>
                 </div>
               </label>
@@ -528,9 +528,9 @@
           </div>
           <div class="tab">
             <div class="panel">
-              <label>
+              <label class="textarea required">
                 <div class="label">А что бы вас стимулировало начать обучение у меня уже сегодня?</div>
-                <div class="textarea"><strong>Ответ:</strong>
+                <div class="textarea-style"><strong>Ответ:</strong>
                   <textarea type="text" name="question_19" placeholder="Ваш ответ"></textarea>
                 </div>
               </label>
