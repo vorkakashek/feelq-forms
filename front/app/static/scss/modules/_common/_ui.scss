@@ -92,6 +92,18 @@ p {
 				color: var(--error);
 			}
 		}
+
+		.toggler {
+			label {
+				.radio-icon {
+					background-color: var(--error);
+
+					img {
+						filter: brightness(100);
+					}
+				}
+			}
+		}
 	}
 
 	.label {

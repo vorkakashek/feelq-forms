@@ -71,6 +71,13 @@ function progress() {
 }
 
 function showTab(n) {
+  if (currentTab + 1 === document.querySelectorAll('.tab').length) {
+    fetch('/', {
+      method: 'POST',
+      body: new FormData(document.getElementsByTagName('form')[0])
+    });
+  }
+
   console.log("Текущая стр: " + (currentTab + 1));
   progress();
   showHeader();
@@ -196,7 +203,6 @@ function validateForm() {
       _inputs = requireds[i].querySelectorAll('input.email');
 
       if (_inputs.length > 0) {
-        // TODO: Email
         for (var j = 0; j < _inputs.length; j++) {
           if (!Inputmask('email').mask(_inputs[j]).isComplete()) {
             _inputs[j].closest('.input').className += " invalid";

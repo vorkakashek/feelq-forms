@@ -140,13 +140,6 @@ p strong {
 .required.invalid label span.checkbox-label {
   color: var(--error);
 }
-.required.invalid .toggler label .radio-icon {
-  background-color: var(--error);
-}
-.required.invalid .toggler label .radio-icon img {
-  -webkit-filter: brightness(100);
-          filter: brightness(100);
-}
 .required .label:after {
   content: " *";
 }
