@@ -169,6 +169,10 @@ textarea {
 	display: flex;
 	align-items: center;
 	padding: 20px 0;
+
+	@include respond-to (handlers) {
+		flex-wrap: wrap;
+	}
 }
 
 

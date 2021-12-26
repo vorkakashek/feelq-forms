@@ -89,6 +89,7 @@ function showTab(n) {
 
     if (currentTab === 0) {
       document.querySelector('#nextBtn').textContent = "Начнем!";
+      document.querySelector('#note').classList.add('show');
     }
 
     if (tabsCounter === document.querySelectorAll('.tab-group')[currentTabGroup].querySelectorAll('.tab').length || document.querySelectorAll('.tab')[currentTab].matches('.thanks')) {
@@ -98,6 +99,7 @@ function showTab(n) {
       document.querySelector('#prevBtn').classList.add('show');
       document.querySelector('#prevBtn').classList.remove('hide');
       document.querySelector('#nextBtn').textContent = "Дальше";
+      document.querySelector('#note').classList.remove('show');
     }
 
     if (n + 1 === x.length) {

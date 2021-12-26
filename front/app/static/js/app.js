@@ -66,17 +66,21 @@ function showTab(n) {
 		// This function will display the specified tab of the form ...
 		var x = document.querySelectorAll(".tab");
 		x[n].classList.add('active');
+		
 		// ... and fix the Previous/Next buttons:
 		if (currentTab === 0) {
 			document.querySelector('#nextBtn').textContent = "Начнем!";
+			document.querySelector('#note').classList.add('show');
 		}
 		if (tabsCounter === document.querySelectorAll('.tab-group')[currentTabGroup].querySelectorAll('.tab').length || document.querySelectorAll('.tab')[currentTab].matches('.thanks')) {
 			document.querySelector('#prevBtn').classList.add('hide');
 			document.querySelector('#prevBtn').classList.remove('show');
+			
 		} else {
 			document.querySelector('#prevBtn').classList.add('show');
 			document.querySelector('#prevBtn').classList.remove('hide');
-			document.querySelector('#nextBtn').textContent = "Дальше"
+			document.querySelector('#nextBtn').textContent = "Дальше";
+			document.querySelector('#note').classList.remove('show');
 		}
 		if ((n + 1) === x.length) {
 			document.querySelector("#nextBtn").innerHTML = "Готово";
